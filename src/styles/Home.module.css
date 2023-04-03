@@ -15,7 +15,6 @@
   max-width: var(--max-width);
   width: 100%;
   z-index: 2;
-  font-family: var(--font-mono);
 }
 
 .description a {
@@ -41,7 +40,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
+  grid-template-columns: repeat(2, minmax(25%, auto));
   width: var(--max-width);
   max-width: 100%;
 }
@@ -77,78 +76,124 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 4rem 0;
+  padding: .5rem 0;
 }
 
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
-}
 
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
-}
-
-.center::before,
-.center::after {
-  content: '';
+.glitch1,
+.glitch2 {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
-}
-
-.logo,
-.thirteen {
-  position: relative;
-}
-
-.thirteen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 75px;
-  height: 75px;
-  padding: 25px 10px;
-  margin-left: 16px;
-  transform: translateZ(0);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0px 2px 8px -1px #0000001a;
-}
-
-.thirteen::before,
-.thirteen::after {
-  content: '';
-  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   z-index: -1;
+  opacity: .45;
 }
 
-/* Conic Gradient Animation */
-.thirteen::before {
-  animation: 6s rotate linear infinite;
-  width: 200%;
-  height: 200%;
-  background: var(--tile-border);
+.glitch2 {
+  opacity: .25;
 }
 
-/* Inner Square */
-.thirteen::after {
-  inset: 0;
-  padding: 1px;
-  border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
-  background-clip: content-box;
+.glitch1::before,
+.glitch1::after,
+.glitch2::before,
+.glitch2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(45px);
+}
+
+.glitch1::before {
+  left: -20%;
+  background: var(--secondary-glow);
+}
+
+.glitch1::after {
+  left: 20%;
+  background: var(--primary-glow);
+}
+
+.glitch2::before {
+  left: -20%;
+  background: var(--primary-glow);
+  mix-blend-mode: overlay;
+  animation: glitch 5s linear infinite;
+}
+
+.glitch2::after {
+  left: 20%;
+  background: var(--secondary-glow);
+  mix-blend-mode: overlay;
+  animation: glitch2 11s linear infinite;
+}
+
+@keyframes glitch {
+  0%, 2.49% {
+    clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  2.5%, 7.49% {
+    clip-path: polygon(80% 0, 100% 0, 100% 20%, 80% 20%);
+  }
+  7.5%, 12.49% {
+    clip-path: polygon(70% 0, 100% 0, 100% 30%, 70% 30%);
+  }
+  12.5%, 17.49% {
+    clip-path: polygon(30% 30%, 100% 30%, 100% 70%, 30% 70%);
+  }
+  17.5%, 22.49% {
+    clip-path: polygon(0 50%, 50% 50%, 50% 100%, 0 100%);
+  }
+  22.5%, 25.49% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+  }
+  25.5%, 27.49% {
+    clip-path: polygon(0 0, 40% 0, 40% 40%, 0 40%);
+  }
+  27.5%, 29.79% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  29.8%, 32.99% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+  }
+  33%, 100% {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
+  }
+}
+
+@keyframes glitch2 {
+  0%, 4.9% {
+    clip-path: polygon(0 100%, 30% 100%, 30% 70%, 0 70%);
+  }
+  5%, 9.9% {
+    clip-path: polygon(70% 100%, 100% 100%, 100% 70%, 70% 70%);
+  }
+  10%, 14.9% {
+    clip-path: polygon(0 50%, 50% 50%, 50% 100%, 0 100%);
+  }
+  15%, 19.9% {
+    clip-path: polygon(50% 0, 100% 0, 100% 50%, 50% 50%);
+  }
+  20%, 24.9% {
+    clip-path: polygon(0 20%, 20% 20%, 20% 50%, 0 50%);
+  }
+  25%, 29.9% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  30%, 100% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+}
+
+.logo {
+  position: relative;
+  color: #ffffff;
+  font-size: 7em;
 }
 
 /* Enable hover only on non-touch devices */
@@ -160,16 +205,6 @@
 
   .card:hover span {
     transform: translateX(4px);
-  }
-}
-
-@media (prefers-reduced-motion) {
-  .thirteen::before {
-    animation: none;
-  }
-
-  .card:hover span {
-    transform: none;
   }
 }
 
@@ -192,15 +227,6 @@
 
   .card h2 {
     margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
   }
 
   .description {
@@ -254,17 +280,6 @@
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo,
-  .thirteen img {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
   }
 }
 
