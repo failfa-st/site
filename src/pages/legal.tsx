@@ -25,11 +25,11 @@ export default function Legal() {
         <section>
           <h2>No Warranties or Representations</h2>
           <p>
-            All information on this website is provided "as is" without any
-            warranties or representations, either express or implied. We make no
-            guarantees regarding the accuracy, reliability, or completeness of
-            the content provided. Use of the information on this website is at
-            your own risk.
+            All information on this website is provided `&quot;as is`&quot;
+            without any warranties or representations, either express or
+            implied. We make no guarantees regarding the accuracy, reliability,
+            or completeness of the content provided. Use of the information on
+            this website is at your own risk.
           </p>
         </section>
         <section>

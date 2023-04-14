@@ -54,9 +54,9 @@ export default function Home() {
               Open Source <span>🤖</span>
             </h2>
             <p className={inter.className}>
-              Explore our GitHub organization, where you'll find all of our open
-              source projects. Contribute, collaborate, and stay up-to-date with
-              the latest in failfast innovations.
+              Explore our GitHub organization, where you&apos;ll find all of our
+              open source projects. Contribute, collaborate, and stay up-to-date
+              with the latest in failfast innovations.
             </p>
           </a>
 
