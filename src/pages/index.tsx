@@ -11,7 +11,10 @@ export default function Home() {
     <>
       <Head>
         <title>failfast</title>
-        <meta name="description" content="AI powered tools and services" />
+        <meta
+          name="description"
+          content="Rapid AI-powered development & innovation"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="apple-touch-icon"
