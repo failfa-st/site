@@ -18,5 +18,20 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.3"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,json,css,scss,md}": [
+      "npm run lint -- --fix",
+      "git add"
+    ]
   }
 }
