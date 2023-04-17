@@ -39,7 +39,7 @@ export default function Home() {
             </Box>
           </Box>
           <Typography variant="h3" mb={2}>
-            failfast
+            failfa.st
           </Typography>
 
           <Typography variant="h5" mb={4}>

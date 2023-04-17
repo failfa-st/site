@@ -17,7 +17,7 @@ export default function MyApp(props: MyAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>failfast</title>
+        <title>failfa.st</title>
         <meta
           name="description"
           content="Rapid AI-powered development & innovation"
