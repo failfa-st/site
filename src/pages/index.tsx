@@ -1,102 +1,77 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import Footer from "@/atoms/footer";
+import { useEffect, useRef, useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import dynamic from "next/dynamic";
+import { useColorScheme } from "@mui/material/styles";
+import { getTheme } from "@/utils";
+import Head from "next/head";
+import Footer from "@/atoms/footer";
+import { Container, Typography } from "@mui/material";
 
 export default function Home() {
+  const { mode, systemMode } = useColorScheme();
+
   return (
     <>
-      <Head>
-        <title>failfast</title>
-        <meta
-          name="description"
-          content="Rapid AI-powered development & innovation"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
-      <main className={styles.main}>
-        <div className={styles.center}>
-          <div className={styles.glitch1}></div>
-          <div className={styles.glitch2}></div>
-          <h1 className={styles.logo}>failfast</h1>
-          <p>Rapid AI-powered development & innovation</p>
-        </div>
+      <Container>
+        <Stack sx={{ alignItems: "center" }}>
+          <Typography variant="h1">failfast</Typography>
+          <Typography variant="h4">
+            Rapid AI-powered development & innovation
+          </Typography>
+        </Stack>
+      </Container>
 
-        <div className={styles.grid}>
-          <a
-            href="https://github.com/failfa-st"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Open Source <span>🤖</span>
-            </h2>
-            <p className={inter.className}>
-              Explore our GitHub organization, where you&apos;ll find all of our
-              open source projects. Contribute, collaborate, and stay up-to-date
-              with the latest in failfast innovations.
-            </p>
-          </a>
+      <div>
+        <a
+          href="https://github.com/failfa-st"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Open Source <span>🤖</span>
+          </h2>
+          <p>
+            Explore our GitHub organization, where you&apos;ll find all of our
+            open source projects. Contribute, collaborate, and stay up-to-date
+            with the latest in failfast innovations.
+          </p>
+        </a>
 
-          <a
-            href="https://youtube.com/@failfa-st"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn & Experience <span>🎥</span>
-            </h2>
-            <p className={inter.className}>
-              Experience the fascinating world of failfast through our YouTube
-              channel, demonstrating our tools in action and the power of
-              AI-driven development. Keep an eye out for more insightful
-              updates!
-            </p>
-          </a>
+        <a
+          href="https://youtube.com/@failfa-st"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Learn & Experience <span>🎥</span>
+          </h2>
+          <p>
+            Experience the fascinating world of failfast through our YouTube
+            channel, demonstrating our tools in action and the power of
+            AI-driven development. Keep an eye out for more insightful updates!
+          </p>
+        </a>
 
-          <a
-            href="https://discord.gg/m3TBB9XEkb"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Connect & Grow <span>💬</span>
-            </h2>
-            <p className={inter.className}>
-              Join our thriving Discord community to connect with like-minded
-              people, share ideas, and collaborate on exciting AI-driven
-              projects. Be part of the failfast family!
-            </p>
-          </a>
-        </div>
-      </main>
+        <a
+          href="https://discord.gg/m3TBB9XEkb"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Connect & Grow <span>💬</span>
+          </h2>
+          <p>
+            Join our thriving Discord community to connect with like-minded
+            people, share ideas, and collaborate on exciting AI-driven projects.
+            Be part of the failfast family!
+          </p>
+        </a>
+      </div>
 
       <Footer />
     </>

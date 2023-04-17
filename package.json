@@ -1,14 +1,39 @@
 {
   "name": "site",
   "version": "0.1.0",
-  "private": true,
+  "description": "Website of failfast",
+  "keywords": [
+    "ai",
+    "artificial intelligence",
+    "javascript",
+    "gpt",
+    "gpt-4",
+    "gpt-35-turbo",
+    "web-ui"
+  ],
+  "license": "AGPL",
+  "author": {
+    "name": "Tim Pietrusky",
+    "url": "https://github.com/TimPietrusky"
+  },
   "scripts": {
     "dev": "next dev",
+    "prepare": "husky install",
+    "spj": "npx sort-package-json",
+    "toc": "npx markdown-toc README.md -i",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/parser": "7.21.4",
+    "@emotion/cache": "11.10.7",
+    "@emotion/react": "11.10.6",
+    "@emotion/server": "11.10.0",
+    "@emotion/styled": "11.10.6",
+    "@mui/icons-material": "5.11.16",
+    "@mui/material": "5.12.0",
+    "@types/prettier": "^2.7.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
@@ -20,8 +45,10 @@
     "typescript": "5.0.3"
   },
   "devDependencies": {
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.1"
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "18.15.11",
+    "@types/react-syntax-highlighter": "^15.5.6",
+    "husky": "^8.0.3"
   },
   "husky": {
     "hooks": {
@@ -30,8 +57,17 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,css,scss,md}": [
-      "npm run lint -- --fix",
-      "git add"
+      "npx prettier --write"
+    ],
+    "package.json": [
+      "npx sort-package-json",
+      "npx prettier --write"
+    ],
+    "*.md": [
+      "npx prettier --write"
+    ],
+    "README.md": [
+      "npx markdown-toc -i"
     ]
   }
 }
