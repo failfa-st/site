@@ -12,8 +12,6 @@ export default async function handler(
         const answer = await toOpenAI(request.body);
         return response.status(200).json(answer);
       } catch (error: any) {
-        console.log(error);
-
         return response.status((error as AxiosError).status ?? 500).json({});
       }
     default:
