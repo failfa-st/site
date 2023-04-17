@@ -61,9 +61,10 @@ export default function Home() {
               <CardHeader title="Open Source"></CardHeader>
               <CardContent>
                 <Typography>
-                  Explore our GitHub organization, where you&apos;ll find all of
-                  our open source projects. Contribute, collaborate, and stay
-                  up-to-date with the latest in failfast innovations.
+                  Open source is our path to the future. By sharing our code, we
+                  foster collaboration and create scalable and secure solutions.
+                  Join us on our journey to make open source the way to go for a
+                  better tomorrow.
                 </Typography>
               </CardContent>
             </Card>
@@ -82,10 +83,9 @@ export default function Home() {
               <CardHeader title="Experience"></CardHeader>
               <CardContent>
                 <Typography>
-                  Join the fascinating world of failfast through our YouTube
-                  channel, demonstrating our tools in action and the power of
-                  AI-driven development. Keep an eye out for more insightful
-                  updates!
+                  Check out our YouTube channel to see our AI software and
+                  projects in action. Don&apos;t miss out on the latest
+                  developments in technology and innovation!
                 </Typography>
               </CardContent>
             </Card>
@@ -104,9 +104,9 @@ export default function Home() {
               <CardHeader title="Connect"></CardHeader>
               <CardContent>
                 <Typography>
-                  Join our thriving Discord community to connect with
-                  like-minded people, share ideas, and collaborate on exciting
-                  AI-driven projects. Be part of the failfast family!
+                  Join our Discord server and become part of our community of
+                  early adopters. We believe in supporting each other as we
+                  explore the latest frontiers in technology.
                 </Typography>
               </CardContent>
             </Card>
