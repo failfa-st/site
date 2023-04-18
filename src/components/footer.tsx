@@ -1,31 +1,67 @@
-import styles from "@/styles/Footer.module.css";
-import Link from "next/link";
+import NextLink, { LinkProps } from "next/link";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import MuiLink from "@mui/material/Link";
+import { ReactNode } from "react";
+
+function Link({ children, ...props }: LinkProps & { children: ReactNode }) {
+	return (
+		<NextLink {...props} legacyBehavior passHref>
+			<MuiLink>{children}</MuiLink>
+		</NextLink>
+	);
+}
 
 const Footer = () => {
 	return (
-		<footer className={styles.footer}>
-			<div className={styles.container}>
-				<div className={styles.left}>© 2023 failfa.st</div>
-				<div className={styles.right}>
+		<Box
+			component="footer"
+			sx={{
+				display: "flex",
+				gap: 1,
+				flexWrap: "wrap",
+				p: 2,
+			}}
+		>
+			<Typography>© 2023 failfa.st</Typography>
+			<Stack sx={{ flex: 1 }}>
+				<Box
+					sx={{
+						display: "flex",
+						gap: 1,
+						flexWrap: "wrap",
+						justifyContent: "flex-end",
+						p: 2,
+					}}
+				>
 					<Link href="/legal/data-policy">Data Policy</Link>
 					<Link href="/legal/imprint">Imprint</Link>
-					<Link
+
+					<MuiLink
 						href="https://twitter.com/failfa_st"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						Twitter
-					</Link>
-					<Link
+					</MuiLink>
+					<MuiLink
 						href="https://www.youtube.com/@failfa-st"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						YouTube
-					</Link>
-				</div>
-			</div>
-		</footer>
+					</MuiLink>
+					<MuiLink
+						href="https://discord.com/invite/m3TBB9XEkb"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Discord
+					</MuiLink>
+				</Box>
+			</Stack>
+		</Box>
 	);
 };
 

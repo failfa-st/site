@@ -202,7 +202,7 @@ export default function Home() {
 	function reload() {
 		connection.current = false;
 		if (ref.current) {
-			ref.current.src = `/projects/live?${nanoid()}`;
+			ref.current.src = `/projects/fail4/live?${nanoid()}`;
 			setLoadingLive(true);
 			setTries(1);
 		}
@@ -628,7 +628,7 @@ export default function Home() {
 							overflow: "hidden",
 							visibility: loadingLive ? "hidden" : undefined,
 						}}
-						src="/projects/live"
+						src="/projects/fail4/live"
 					/>
 				</Stack>
 			</Stack>
