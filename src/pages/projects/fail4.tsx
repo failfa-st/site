@@ -13,6 +13,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ReplayIcon from "@mui/icons-material/Replay";
+import CropSquareIcon from "@mui/icons-material/CropSquare";
 import MoneyIcon from "@mui/icons-material/Money";
 import TollIcon from "@mui/icons-material/Toll";
 import TextField from "@mui/material/TextField";
@@ -54,6 +55,25 @@ import Link from "next/link";
 import InfoIcon from "@mui/icons-material/Info";
 import { useRouter } from "next/router";
 const MonacoEditor = dynamic(import("@monaco-editor/react"), { ssr: false });
+
+function Codesandbox({ title, content }: { title: string; content: string }) {
+	return (
+		<Button
+			variant="outlined"
+			startIcon={<CropSquareIcon />}
+			sx={{ whiteSpace: "nowrap" }}
+			onClick={async () => {
+				const { data } = await axios.post<string>("/api/url/codesandbox", {
+					content,
+					title,
+				});
+				window.open(data, "_blank");
+			}}
+		>
+			Codesandbox
+		</Button>
+	);
+}
 
 export function InfoMenu() {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -562,7 +582,11 @@ export default function Home() {
 							>
 								<ReplayIcon />
 							</IconButton>
+							{current && (
+								<Codesandbox title={current.task} content={current.content} />
+							)}
 							<Box sx={{ flex: 1 }} />
+
 							<InfoMenu />
 						</Toolbar>
 					</AppBar>

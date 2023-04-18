@@ -42,6 +42,7 @@
     "esdeka": "0.1.18",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "codesandbox": "2.2.3",
     "gpt3-tokenizer": "1.1.5",
     "jotai": "2.0.4",
     "monaco-editor": "0.37.1",
@@ -55,6 +56,8 @@
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
     "@types/node": "18.15.11",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
     "@types/react-syntax-highlighter": "^15.5.6",
     "husky": "^8.0.3"
   },
