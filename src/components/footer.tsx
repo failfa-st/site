@@ -4,6 +4,9 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import MuiLink from "@mui/material/Link";
 import { ReactNode } from "react";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import SvgIcon from "@mui/material/SvgIcon";
 
 function Link({ children, ...props }: LinkProps & { children: ReactNode }) {
 	return (
@@ -24,7 +27,6 @@ const Footer = () => {
 				p: 2,
 			}}
 		>
-			<Typography>© 2023 failfa.st</Typography>
 			<Stack sx={{ flex: 1 }}>
 				<Box
 					sx={{
@@ -35,30 +37,9 @@ const Footer = () => {
 						p: 2,
 					}}
 				>
-					<Link href="/legal/data-policy">Data Policy</Link>
 					<Link href="/legal/imprint">Imprint</Link>
-
-					<MuiLink
-						href="https://twitter.com/failfa_st"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Twitter
-					</MuiLink>
-					<MuiLink
-						href="https://www.youtube.com/@failfa-st"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						YouTube
-					</MuiLink>
-					<MuiLink
-						href="https://discord.com/invite/m3TBB9XEkb"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Discord
-					</MuiLink>
+					<Link href="/legal/data-policy">Data Policy</Link>
+					<Typography>© 2023 failfa.st</Typography>
 				</Box>
 			</Stack>
 		</Box>
