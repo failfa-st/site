@@ -21,6 +21,15 @@ ${renderToString(
 		</head>
 		<body>
 			<canvas id="canvas" />
+			<a className="failfast" href="https://failfa.st" target="_blank">
+				AI generated with
+				<svg viewBox="0 0 24 24">
+					<path
+						fill="currentColor"
+						d="m8,12c-.55,0-1-.45-1-1,0,0,0,0,0,0h-1v-1h4v1h-1s0,0,0,0c0,.55-.45,1-1,1Zm-4-2v4l.97,1.56-.02-4.03-.96-1.53Zm4,8h4v-1h-4v1Zm4,2v2s3,0,3,0l2.5-4h-4.3l-1.2,2Zm8-12v6l-1.28,2.05-4.33-.04.61-1.01h-3s0-13,0-13c7,0,8,6,8,6Zm-2,3l-2-2-2,2.01,2,1.99,2-2Zm-7,4h-1v1h1v-1Z"
+					/>
+				</svg>
+			</a>
 		</body>
 	</html>
 )}`;
@@ -40,6 +49,35 @@ html, body {
 	width: 100%;
 	overflow: hidden;
 	background: #a9a9a9;
+}
+.failfast {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin: 10px;
+	padding: 10px;
+}
+.failfast {
+  position: fixed;
+  display: "flex";
+  align-items: center;
+  align-content: center;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: sans-serif;
+}
+.failfast svg {
+  height: 1em;
+  width: 1em;
+  font-size: 24px;
+  margin: 0 0 -4px 4px;
 }
 `;
 	},
