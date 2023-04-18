@@ -1,21 +1,15 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import {
-	Card,
-	CardContent,
-	CardHeader,
-	Container,
-	Unstable_Grid2 as Grid,
-	Typography,
-} from "@mui/material";
+import { Container, Unstable_Grid2 as Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import MuiLink from "@mui/material/Link";
-import { ReactNode } from "react";
+
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SvgIcon from "@mui/material/SvgIcon";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function Home() {
 	return (
@@ -60,6 +54,13 @@ export default function Home() {
 						</Button>
 					</Link> */}
 					<Stack sx={{ flexDirection: "row", gap: 2 }}>
+						<MuiLink
+							href="https://github.com/failfa-st"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<GitHubIcon />
+						</MuiLink>
 						<MuiLink
 							href="https://twitter.com/failfa_st"
 							target="_blank"
