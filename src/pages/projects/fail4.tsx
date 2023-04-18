@@ -217,11 +217,18 @@ export default function Home() {
 					position: "absolute",
 					inset: 0,
 					overflow: "hidden",
-					flexDirection: "row",
+					flexDirection: { md: "row" },
 					height: "100%",
 				}}
 			>
-				<Stack sx={{ width: "50%", flex: 1 }}>
+				<Stack
+					sx={{
+						width: { md: "50%" },
+						height: { xs: "50%", md: "100%" },
+						flex: 1,
+						overflow: "hidden",
+					}}
+				>
 					<AppBar position="static" elevation={0} color="default">
 						<Toolbar>
 							<Link href="/" aria-label="home" style={{ color: "inherit" }}>
@@ -570,7 +577,14 @@ export default function Home() {
 						</List>
 					</Stack>
 				</Stack>
-				<Stack sx={{ flex: 1, width: "50%", position: "relative" }}>
+				<Stack
+					sx={{
+						flex: 1,
+						width: { md: "50%" },
+						height: { xs: "50%", md: "auto" },
+						position: "relative",
+					}}
+				>
 					<AppBar position="static" elevation={0} color="default">
 						<Toolbar>
 							<IconButton
