@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Layout({ children }: { children: ReactNode }) {
 	return (
 		<>
-			<Box sx={{ minHeight: "100vh" }}>
+			<Box sx={{ minHeight: "100vh", a: { color: "currentColor", fontWeight: "bold" } }}>
 				<AppBar position="sticky">
 					<Toolbar>
 						<Link href="/" aria-label="home" style={{ color: "inherit" }}>
