@@ -56,7 +56,7 @@ export default function Home() {
 						<>
 							<Button
 								onClick={() => {
-									void signIn("github");
+									void signIn();
 								}}
 							>
 								Login

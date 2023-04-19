@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 	return (
 		<>
 			<Box sx={{ minHeight: "100vh", a: { color: "currentColor", fontWeight: "bold" } }}>
-				<AppBar position="sticky">
+				<AppBar position="fixed" sx={{ background: "transparent" }} elevation={0}>
 					<Toolbar>
 						<Link href="/" aria-label="home" style={{ color: "inherit" }}>
 							<Box
