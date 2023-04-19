@@ -7,10 +7,36 @@ import theme from "@/lib/theme";
 import { CssBaseline } from "@mui/material";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { MDXProvider } from "@mdx-js/react";
+import Typography from "@mui/material/Typography";
+import { ReactNode } from "react";
 
 const CookieBanner = dynamic(async () => await import("@/components/cookie-banner"), {
 	ssr: false,
 });
+interface ComponentProps {
+	children?: ReactNode;
+}
+const components = {
+	h1: ({ children }: ComponentProps) => <Typography variant="h1">{children}</Typography>,
+	h2: ({ children }: ComponentProps) => <Typography variant="h2">{children}</Typography>,
+	h3: ({ children }: ComponentProps) => <Typography variant="h3">{children}</Typography>,
+	h4: ({ children }: ComponentProps) => <Typography variant="h4">{children}</Typography>,
+	h5: ({ children }: ComponentProps) => <Typography variant="h5">{children}</Typography>,
+	h6: ({ children }: ComponentProps) => <Typography variant="h6">{children}</Typography>,
+	p: ({ children }: ComponentProps) => (
+		<Typography component="p" my={1}>
+			{children}
+		</Typography>
+	),
+	ul: ({ children }: ComponentProps) => (
+		<Typography component="ul" my={1}>
+			{children}
+		</Typography>
+	),
+	li: ({ children }: ComponentProps) => <Typography component="li">{children}</Typography>,
+};
+
 const clientSideEmotionCache = createEmotionCache();
 
 export interface MyAppProps extends AppProps {
@@ -36,7 +62,9 @@ export default function MyApp(props: MyAppProps) {
 			</Head>
 			<CssVarsProvider defaultMode="system" theme={theme}>
 				<CssBaseline />
-				<Component {...pageProps} />
+				<MDXProvider components={components}>
+					<Component {...pageProps} />
+				</MDXProvider>
 				{pathname !== "/projects/fail4/live" && <CookieBanner />}
 			</CssVarsProvider>
 		</CacheProvider>
