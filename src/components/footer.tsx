@@ -1,20 +1,7 @@
-import NextLink, { LinkProps } from "next/link";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import MuiLink from "@mui/material/Link";
-import { ReactNode } from "react";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import SvgIcon from "@mui/material/SvgIcon";
-
-function Link({ children, ...props }: LinkProps & { children: ReactNode }) {
-	return (
-		<NextLink {...props} legacyBehavior passHref>
-			<MuiLink>{children}</MuiLink>
-		</NextLink>
-	);
-}
+import { Link } from "@/components/link";
 
 const Footer = () => {
 	return (
