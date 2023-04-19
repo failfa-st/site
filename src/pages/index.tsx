@@ -1,17 +1,48 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import { Container, Typography } from "@mui/material";
+import { Container, List, ListItem, ListItemButton, Typography } from "@mui/material";
 import MuiLink from "@mui/material/Link";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
+	const { data: session } = useSession();
+
 	return (
 		<>
 			<Container>
+				<Stack>
+					<List component="nav">
+						{session?.user ? (
+							<>
+								<ListItem>{session?.user?.name}</ListItem>
+
+								<ListItemButton
+									onClick={() => {
+										void signOut();
+									}}
+								>
+									Logout
+								</ListItemButton>
+							</>
+						) : (
+							<>
+								<ListItemButton
+									onClick={() => {
+										void signIn("github");
+									}}
+								>
+									Login
+								</ListItemButton>
+							</>
+						)}
+					</List>
+				</Stack>
+
 				<Stack sx={{ alignItems: "center", height: "100vh" }}>
 					<Box
 						sx={{
