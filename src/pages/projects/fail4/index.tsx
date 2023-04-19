@@ -56,6 +56,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import { useRouter } from "next/router";
 import { wrappers } from "@/projects/fail4/utils/share";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+import Tooltip from "@mui/material/Tooltip";
 const MonacoEditor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
 export interface ShareProps {
@@ -65,20 +66,21 @@ export interface ShareProps {
 
 function Codesandbox({ title, content }: ShareProps) {
 	return (
-		<Button
-			variant="outlined"
-			startIcon={<CropSquareIcon />}
-			sx={{ whiteSpace: "nowrap" }}
-			onClick={async () => {
-				const { data } = await axios.post<string>("/api/url/codesandbox", {
-					content,
-					title,
-				});
-				window.open(data, "_blank");
-			}}
-		>
-			Codesandbox
-		</Button>
+		<Tooltip title="Open in Codesandbox">
+			<IconButton
+				color="primary"
+				ari-label="Codsandbox"
+				onClick={async () => {
+					const { data } = await axios.post<string>("/api/url/codesandbox", {
+						content,
+						title,
+					});
+					window.open(data, "_blank");
+				}}
+			>
+				<CropSquareIcon />
+			</IconButton>
+		</Tooltip>
 	);
 }
 
@@ -107,9 +109,11 @@ function Codepen({ title, content }: ShareProps) {
 				})}
 			/>
 
-			<Button variant="outlined" startIcon={<CodepenIcon />} type="submit">
-				Codepen
-			</Button>
+			<Tooltip title="Open in Codepen">
+				<IconButton color="primary" type="submit" aria-label="Codepen">
+					<CodepenIcon />
+				</IconButton>
+			</Tooltip>
 		</form>
 	);
 }
@@ -627,6 +631,7 @@ export default function Home() {
 					<AppBar position="static" elevation={0} color="default">
 						<Toolbar>
 							<IconButton
+								edge="start"
 								color="inherit"
 								aria-label="Reload"
 								onClick={() => {
@@ -636,10 +641,10 @@ export default function Home() {
 								<ReplayIcon />
 							</IconButton>
 							{current && (
-								<Stack direction="row" gap={1}>
+								<>
 									<Codepen title={current.task} content={current.content} />
 									<Codesandbox title={current.task} content={current.content} />
-								</Stack>
+								</>
 							)}
 							<Box sx={{ flex: 1 }} />
 
