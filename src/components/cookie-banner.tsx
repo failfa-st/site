@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 
 export default function CookieBanner() {
 	const { acceptCookies, acceptAllCookies, consent } = useCookieConsentContext();
-	console.log(consent);
 	function acceptNecessary() {
 		acceptCookies({
 			necessary: true,
