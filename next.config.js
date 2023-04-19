@@ -17,13 +17,15 @@ const nextConfig = {
 	pageExtensions: ["ts", "tsx", "mdx"],
 	swcMinify: true,
 	redirects: () => {
-		return [
-			{
-				source: "/projects/:path*",
-				destination: "/",
-				permanent: false,
-			},
-		];
+		return process.env.NODE_ENV === "production"
+			? [
+					{
+						source: "/projects/:path*",
+						destination: "/",
+						permanent: false,
+					},
+			  ]
+			: [];
 	},
 };
 
