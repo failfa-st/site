@@ -640,7 +640,7 @@ export default function Home() {
 							>
 								<ReplayIcon />
 							</IconButton>
-							{current && (
+							{current && current.id !== "1" && (
 								<>
 									<Codepen title={current.task} content={current.content} />
 									<Codesandbox title={current.task} content={current.content} />
