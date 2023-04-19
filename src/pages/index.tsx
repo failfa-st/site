@@ -8,9 +8,14 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 export default function Home() {
 	const { data: session } = useSession();
+
+	useEffect(() => {
+		void fetch("/api/test");
+	}, []);
 
 	return (
 		<>

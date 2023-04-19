@@ -5,8 +5,17 @@ import parserHTML from "prettier/parser-html";
 import parserCSS from "prettier/parser-postcss";
 import parserBabel from "prettier/parser-babel";
 import { wrappers } from "@/projects/fail4/utils/share";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+	const session = await getServerSession(request, response, authOptions);
+
+	if (!session) {
+		response.status(401).json({ message: "Unauthorized" });
+		return;
+	}
+
 	const content = request.body.content as string;
 	const title = request.body.title as string;
 

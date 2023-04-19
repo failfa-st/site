@@ -1,12 +1,13 @@
 import { toOpenAI } from "@/projects/fail4/services/api";
 import { NextApiRequest, NextApiResponse } from "next";
 import { AxiosError } from "axios";
-import { getToken } from "next-auth/jwt";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
-	const token = await getToken({ req: request });
+	const session = await getServerSession(request, response, authOptions);
 
-	if (!token) {
+	if (!session) {
 		response.status(401).json({ message: "Unauthorized" });
 		return;
 	}
@@ -16,7 +17,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 			try {
 				const answer = await toOpenAI(request.body);
 				return response.status(200).json(answer);
-			} catch (error: any) {
+			} catch (error) {
 				return response.status((error as AxiosError).status ?? 500).json({});
 			}
 		default:
