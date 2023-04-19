@@ -26,6 +26,7 @@ const Footer = () => {
 				>
 					<Link href="/legal/imprint">Imprint</Link>
 					<Link href="/legal/data-policy">Data Policy</Link>
+					<Link href="/legal/cookie-policy">Cookie Policy</Link>
 					<Typography>© 2023 failfa.st</Typography>
 				</Box>
 			</Stack>
