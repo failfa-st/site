@@ -4,6 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import { ReactNode } from "react";
 import Link from "next/link";
+import UserLogin from "./user-login";
 
 export default function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -23,6 +24,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 								/>
 							</Box>
 						</Link>
+						<UserLogin />
 					</Toolbar>
 				</AppBar>
 				{children}{" "}

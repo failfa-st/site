@@ -11,11 +11,9 @@ import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import UserLogin from "@/components/user-login";
 
 export default function Home() {
-	const [showLogOut, setShowLogOut] = useState(false);
-	const { data: session } = useSession();
-
 	useEffect(() => {
 		void fetch("/api/test");
 	}, []);
@@ -23,47 +21,7 @@ export default function Home() {
 	return (
 		<>
 			<Container>
-				<Stack
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "end",
-						position: "absolute",
-						top: 15,
-						right: 20,
-					}}
-				>
-					{session?.user ? (
-						<>
-							<Avatar
-								src={session?.user.image as string}
-								onClick={() => {
-									void setShowLogOut(previousValue => !previousValue);
-								}}
-							/>
-							{showLogOut ? (
-								<Button
-									sx={{ mt: 1 }}
-									onClick={() => {
-										void signOut();
-									}}
-								>
-									Logout
-								</Button>
-							) : null}
-						</>
-					) : (
-						<>
-							<Button
-								onClick={() => {
-									void signIn();
-								}}
-							>
-								Login
-							</Button>
-						</>
-					)}
-				</Stack>
+				<UserLogin />
 
 				<Stack sx={{ alignItems: "center", height: "100vh" }}>
 					<Box
