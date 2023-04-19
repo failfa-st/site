@@ -1,16 +1,12 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import { Container, Unstable_Grid2 as Grid, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import Link from "next/link";
+import { Container, Typography } from "@mui/material";
 import MuiLink from "@mui/material/Link";
-
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import CookieIcon from "@mui/icons-material/Cookie";
 
 export default function Home() {
 	return (
@@ -102,9 +98,6 @@ export default function Home() {
 
 					<Typography variant="h5" component="h2" mb={4}>
 						Rapid AI-powered Development & Innovation
-					</Typography>
-					<Typography variant="overline" mb={4}>
-						<CookieIcon /> We only use necessary cookies! ( currently none )
 					</Typography>
 				</Stack>
 			</Container>
