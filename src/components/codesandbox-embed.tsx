@@ -21,8 +21,7 @@ export default function CodesandboxEmbed({ src }: { src: string }) {
 						position: "absolute",
 						inset: 0,
 						color: "primary.main",
-						border: "1px solid currentColor",
-						borderRadius: 2,
+						border: 0,
 						overflow: "hidden",
 					}}
 				/>
@@ -36,9 +35,6 @@ export default function CodesandboxEmbed({ src }: { src: string }) {
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
-						color: "primary.main",
-						border: "1px solid currentColor",
-						borderRadius: 2,
 					}}
 				>
 					{!consent.thirdParty && (
