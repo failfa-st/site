@@ -3,6 +3,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import Button from "@mui/material/Button";
 
 const CodesandboxEmbed = dynamic(async () => await import("@/components/codesandbox-embed"), {
 	ssr: false,
@@ -27,7 +29,17 @@ export default function Page() {
 					of &quot;fail4&quot; generated codesandboxes. Embrace the future of AI-powered
 					development and unleash your creativity today!
 				</Typography>
-
+				<Link passHref legacyBehavior href="/projects/fail4">
+					<Button
+						disableElevation
+						disableTouchRipple
+						component="a"
+						color="primary"
+						variant="contained"
+					>
+						Try fail4 now
+					</Button>
+				</Link>
 				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 6 }}>
 					<Grid xs={1}>
 						<CodesandboxEmbed src="https://codesandbox.io/embed/infinite-running-connected-dots-animation-is-in-darkmode-is-for-codepen-io-oovdz1"></CodesandboxEmbed>

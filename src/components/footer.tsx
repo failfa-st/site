@@ -24,6 +24,18 @@ const Footer = () => {
 						p: 2,
 					}}
 				>
+					<Link href="/gallery">Gallery</Link>
+					<Link href="/videos">Videos</Link>
+				</Box>
+				<Box
+					sx={{
+						display: "flex",
+						gap: 1,
+						flexWrap: "wrap",
+						justifyContent: "flex-end",
+						p: 2,
+					}}
+				>
 					<Link href="/legal/imprint">Imprint</Link>
 					<Link href="/legal/data-policy">Data Policy</Link>
 					<Link href="/legal/cookie-policy">Cookie Policy</Link>
