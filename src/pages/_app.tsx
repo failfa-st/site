@@ -19,12 +19,36 @@ interface ComponentProps {
 	children?: ReactNode;
 }
 const components = {
-	h1: ({ children }: ComponentProps) => <Typography variant="h1">{children}</Typography>,
-	h2: ({ children }: ComponentProps) => <Typography variant="h2">{children}</Typography>,
-	h3: ({ children }: ComponentProps) => <Typography variant="h3">{children}</Typography>,
-	h4: ({ children }: ComponentProps) => <Typography variant="h4">{children}</Typography>,
-	h5: ({ children }: ComponentProps) => <Typography variant="h5">{children}</Typography>,
-	h6: ({ children }: ComponentProps) => <Typography variant="h6">{children}</Typography>,
+	h1: ({ children }: ComponentProps) => (
+		<Typography variant="h1" my={2}>
+			{children}
+		</Typography>
+	),
+	h2: ({ children }: ComponentProps) => (
+		<Typography variant="h2" my={2}>
+			{children}
+		</Typography>
+	),
+	h3: ({ children }: ComponentProps) => (
+		<Typography variant="h3" my={2}>
+			{children}
+		</Typography>
+	),
+	h4: ({ children }: ComponentProps) => (
+		<Typography variant="h4" my={2}>
+			{children}
+		</Typography>
+	),
+	h5: ({ children }: ComponentProps) => (
+		<Typography variant="h5" my={2}>
+			{children}
+		</Typography>
+	),
+	h6: ({ children }: ComponentProps) => (
+		<Typography variant="h6" my={1}>
+			{children}
+		</Typography>
+	),
 	p: ({ children }: ComponentProps) => (
 		<Typography component="p" my={1}>
 			{children}
