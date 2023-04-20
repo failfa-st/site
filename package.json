@@ -23,7 +23,11 @@
     "toc": "npx markdown-toc README.md -i",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ncu": "npx npm-check-updates -u --dep='prod,dev'",
+    "ncu:minor": "npm run ncu -- -t minor",
+    "ncu:patch": "npm run ncu -- -t patch",
+    "tsc:noEmit": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/parser": "7.21.4",

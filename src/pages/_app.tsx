@@ -43,7 +43,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 export interface MyAppProps extends AppProps {
 	emotionCache?: EmotionCache;
-	session: Session;
+	session?: Session;
 }
 
 export default function MyApp(props: MyAppProps) {
