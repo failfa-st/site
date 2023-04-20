@@ -21,11 +21,16 @@ const nextConfig = {
 	redirects: () => {
 		return process.env.NODE_ENV === "production"
 			? [
-					{
-						source: "/projects/:path*",
-						destination: "/",
-						permanent: false,
-					},
+				{
+					source: "/projects/:path*",
+					destination: "/",
+					permanent: false,
+				},
+				{
+					source: "/videos",
+					destination: "/",
+					permanent: false,
+				},
 			  ]
 			: [];
 	},
