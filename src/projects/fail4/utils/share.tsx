@@ -66,22 +66,14 @@ html, body {
 }
 .failfast {
 	position: fixed;
-	bottom: 0;
-	right: 0;
-	margin: 10px;
-	padding: 10px;
-}
-.failfast {
-	position: fixed;
 	display: "flex";
 	align-items: center;
 	align-content: center;
 	z-index: 1;
-	bottom: 0;
+	top: 0;
 	left: 0;
-	width: max-content;
-	margin: 10px;
-	padding: 10px 20px;
+	margin: 8px;
+	padding: 6px 16px;
 	background: black;
 	color: white;
 	text-decoration: none;
