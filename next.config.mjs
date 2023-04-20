@@ -1,5 +1,5 @@
-import remarkGfm from 'remark-gfm'
-import  mdx from "@next/mdx"
+import remarkGfm from "remark-gfm";
+import mdx from "@next/mdx";
 const withMDX = mdx({
 	extension: /\.mdx?$/,
 	options: {
@@ -21,16 +21,11 @@ const nextConfig = {
 	redirects: () => {
 		return process.env.NODE_ENV === "production"
 			? [
-				{
-					source: "/projects/:path*",
-					destination: "/",
-					permanent: false,
-				},
-				{
-					source: "/videos",
-					destination: "/",
-					permanent: false,
-				},
+					{
+						source: "/projects/:path*",
+						destination: "/",
+						permanent: false,
+					},
 			  ]
 			: [];
 	},
