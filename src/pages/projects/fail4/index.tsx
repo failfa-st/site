@@ -225,7 +225,6 @@ export default function Home() {
 						connection.current = true;
 						setLoadingLive(false);
 
-						console.log("connected");
 						break;
 					default:
 						break;
@@ -374,12 +373,12 @@ export default function Home() {
 									event.preventDefault();
 									setAnswers(previousAnswers =>
 										previousAnswers.map(previousAnswer => {
-											console.log(previousAnswer.id, activeId);
 											return previousAnswer.id === activeId
 												? { ...previousAnswer, content: template }
 												: previousAnswer;
 										})
 									);
+									setTemplate(previousState => prettify(previousState));
 									reload();
 								}
 							}}
@@ -392,7 +391,6 @@ export default function Home() {
 									fontSize: 14,
 								}}
 								onChange={async value => {
-									console.log(value);
 									setTemplate(value ?? "");
 								}}
 							/>

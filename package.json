@@ -42,6 +42,7 @@
     "@mui/material": "5.12.0",
     "@next/mdx": "13.2.4",
     "@types/prettier": "^2.7.2",
+    "@use-cookie-consent/react": "0.3.7",
     "axios": "1.3.5",
     "codesandbox": "2.2.3",
     "esdeka": "0.1.18",

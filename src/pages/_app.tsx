@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 import { Session } from "next-auth/core/types";
+import { CookieConsentProvider } from "@use-cookie-consent/react";
 
 const CookieBanner = dynamic(async () => await import("@/components/cookie-banner"), {
 	ssr: false,
@@ -20,12 +21,36 @@ interface ComponentProps {
 	children?: ReactNode;
 }
 const components = {
-	h1: ({ children }: ComponentProps) => <Typography variant="h1">{children}</Typography>,
-	h2: ({ children }: ComponentProps) => <Typography variant="h2">{children}</Typography>,
-	h3: ({ children }: ComponentProps) => <Typography variant="h3">{children}</Typography>,
-	h4: ({ children }: ComponentProps) => <Typography variant="h4">{children}</Typography>,
-	h5: ({ children }: ComponentProps) => <Typography variant="h5">{children}</Typography>,
-	h6: ({ children }: ComponentProps) => <Typography variant="h6">{children}</Typography>,
+	h1: ({ children }: ComponentProps) => (
+		<Typography variant="h1" my={2}>
+			{children}
+		</Typography>
+	),
+	h2: ({ children }: ComponentProps) => (
+		<Typography variant="h2" my={2}>
+			{children}
+		</Typography>
+	),
+	h3: ({ children }: ComponentProps) => (
+		<Typography variant="h3" my={2}>
+			{children}
+		</Typography>
+	),
+	h4: ({ children }: ComponentProps) => (
+		<Typography variant="h4" my={2}>
+			{children}
+		</Typography>
+	),
+	h5: ({ children }: ComponentProps) => (
+		<Typography variant="h5" my={2}>
+			{children}
+		</Typography>
+	),
+	h6: ({ children }: ComponentProps) => (
+		<Typography variant="h6" my={1}>
+			{children}
+		</Typography>
+	),
 	p: ({ children }: ComponentProps) => (
 		<Typography component="p" my={1}>
 			{children}
@@ -51,6 +76,11 @@ export default function MyApp(props: MyAppProps) {
 	const { pathname } = useRouter();
 	return (
 		<SessionProvider session={session}>
+			<CookieConsentProvider
+			useCookieConsentHooksOptions={{
+				defaultConsent: {},
+			}}
+		>
 			<CacheProvider value={emotionCache}>
 				<Head>
 					<title>failfa.st</title>
@@ -78,7 +108,6 @@ export default function MyApp(props: MyAppProps) {
 					<meta name="msapplication-TileColor" content="#da532c" />
 					<meta name="theme-color" content="#ffffff" />
 				</Head>
-
 				<CssVarsProvider defaultMode="system" theme={theme}>
 					<CssBaseline />
 					<MDXProvider components={components}>
@@ -87,6 +116,7 @@ export default function MyApp(props: MyAppProps) {
 					{pathname !== "/projects/fail4/live" && <CookieBanner />}
 				</CssVarsProvider>
 			</CacheProvider>
+		</CookieConsentProvider>
 		</SessionProvider>
 	);
 }
