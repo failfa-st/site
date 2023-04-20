@@ -1,4 +1,16 @@
-<h1>site</h1>
+<h1 align="center"><big>failfa.st</big></h1>
+
+<p align="center"><img src="assets/logo.png" alt="logo" width="200"/></p>
+
+Welcome to the official repository of failfa.st, where we embrace rapid AI-driven innovation and
+development to create groundbreaking products. Our ethos centers on failing fast to save time,
+empowering developers to build extraordinary applications while constantly pushing the boundaries of
+what's possible.
+
+At failfa.st, innovation is our primary focus, and we are always thinking three steps ahead. Our
+AI-powered tools and prototypes are designed to streamline coding processes, enabling developers to
+experiment, learn, and iterate quickly. By combining cutting-edge technology with a forward-thinking
+approach, we aim to revolutionize the way developers create and interact with code.
 
 ## Development
 
