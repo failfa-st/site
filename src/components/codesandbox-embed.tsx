@@ -5,14 +5,13 @@ import { useState } from "react";
 
 export default function CodesandboxEmbed({ src }: { src: string }) {
 	const { consent, acceptCookies } = useCookieConsentContext();
-	const [loaded, setLoaded] = useState(false);
 
 	return (
 		<Box sx={{ position: "relative", paddingBottom: `${(100 / 16) * 9}%` }}>
-			{consent.thirdParty && loaded ? (
+			{consent.thirdParty ? (
 				<Box
 					component="iframe"
-					src={src}
+					src={`${src}?codemirror=1&hidedevtools=1&hidenavigation=1&runonclick=1&module=script.js`}
 					allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 					sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 					sx={{
@@ -46,13 +45,6 @@ export default function CodesandboxEmbed({ src }: { src: string }) {
 							Allow Third Party Cookies
 						</Button>
 					)}
-					<Button
-						onClick={() => {
-							setLoaded(true);
-						}}
-					>
-						Show Sandbox
-					</Button>
 				</Box>
 			)}
 		</Box>
