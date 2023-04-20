@@ -32,7 +32,7 @@ export default function Page() {
 					of &quot;fail4&quot; generated codesandboxes. Embrace the future of AI-powered
 					development and unleash your creativity today!
 				</Typography>
-				<Link passHref legacyBehavior href="/projects/fail4">
+				{/*<Link passHref legacyBehavior href="/projects/fail4">
 					<Button
 						disableElevation
 						disableTouchRipple
@@ -42,7 +42,7 @@ export default function Page() {
 					>
 						Try fail4 now
 					</Button>
-				</Link>
+				</Link>*/}
 				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 6 }}>
 					<Grid
 						xs={1}

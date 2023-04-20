@@ -25,7 +25,7 @@ const Footer = () => {
 					}}
 				>
 					<Link href="/gallery">Gallery</Link>
-					<Link href="/videos">Videos</Link>
+					{/*<Link href="/videos">Videos</Link>*/}
 				</Box>
 				<Box
 					sx={{
