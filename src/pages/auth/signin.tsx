@@ -2,9 +2,14 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Layout from "@/components/layout";
-import { signIn } from "next-auth/react";
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import { getProviders, signIn } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../api/auth/[...nextauth]";
 
-export default function SignIn() {
+export default function SignIn({
+	providers,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	return (
 		<Layout>
 			<Stack
@@ -28,4 +33,18 @@ export default function SignIn() {
 			</Stack>
 		</Layout>
 	);
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+	const session = await getServerSession(context.req, context.res, authOptions);
+
+	if (session) {
+		return { redirect: { destination: "/" } };
+	}
+
+	const providers = await getProviders();
+
+	return {
+		props: { providers: providers ?? [] },
+	};
 }
