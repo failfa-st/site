@@ -2,7 +2,18 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import { Container, List, ListItem, ListItemButton, Typography } from "@mui/material";
+import {
+	Card,
+	CardActions,
+	CardContent,
+	CardMedia,
+	Container,
+	Grid,
+	List,
+	ListItem,
+	ListItemButton,
+	Typography,
+} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import MuiLink from "@mui/material/Link";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -12,12 +23,16 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import UserLogin from "@/components/user-login";
+import YoutubeEmbed from "@/components/youtube-embed";
+import { Link } from "@/components/link";
+import dynamic from "next/dynamic";
+import Layout from "@/components/layout";
+
+const CodesandboxEmbed = dynamic(async () => await import("@/components/codesandbox-embed"), {
+	ssr: false,
+});
 
 export default function Home() {
-	useEffect(() => {
-		void fetch("/api/test");
-	}, []);
-
 	return (
 		<>
 			<Container>
@@ -117,13 +132,77 @@ export default function Home() {
 				<Stack sx={{ alignItems: "center" }}>
 					<Stack sx={{ textAlign: "center" }}>
 						<Typography component="p" maxWidth={450}>
-							failfa.st is an open-source collective that does not generate any
-							income. We are a community of volunteers who contribute to various
-							projects without any monetary compensation. Our primary goal is to
-							create open-source software that can be used by anyone for free.
+							failfa.st is an open-source community of volunteers who contribute to
+							various projects without any monetary compensation. Our primary goal is
+							to create open-source software that can be used by anyone for free.
 						</Typography>
 					</Stack>
 				</Stack>
+
+				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 6 }}>
+					<Grid
+						xs={1}
+						sx={{
+							alignItems: "stretch",
+							display: "flex",
+							justifyContent: "stretch",
+						}}
+					>
+						<Card sx={{ flex: 1 }}>
+							<CardMedia>
+								<YoutubeEmbed ytId="wHgwfotfxe8" />
+							</CardMedia>
+
+							<CardContent>
+								<Typography gutterBottom variant="h3" component="h3">
+									100 % Prompt Driven Development on Canvas2D
+								</Typography>
+								<Typography>
+									We introduce our groundbreaking WebUI &quote;fail4&quote; for a
+									100% prompt driven web development using the OpenAI API.
+									Experience a new era of web design as we demonstrate the
+									incredible potential of GPT-3.5-turbo.
+								</Typography>
+							</CardContent>
+
+							<CardActions>
+								<Typography gutterBottom variant="h5" component="h5">
+									Explore all <Link href="/videos">Videos</Link>
+								</Typography>
+							</CardActions>
+						</Card>
+					</Grid>
+
+					<Grid
+						xs={1}
+						sx={{
+							alignItems: "stretch",
+							display: "flex",
+							justifyContent: "stretch",
+						}}
+					>
+						<Card sx={{ flex: 1 }}>
+							<CardMedia>
+								<CodesandboxEmbed src="https://codesandbox.io/embed/matrix-code-8rgb8t"></CodesandboxEmbed>
+							</CardMedia>
+
+							<CardContent>
+								<Typography gutterBottom variant="h4" component="h3">
+									matrix code
+								</Typography>
+								<Typography>
+									fail4 generated the matrix anination with just one prompt
+								</Typography>
+							</CardContent>
+
+							<CardActions>
+								<Typography gutterBottom variant="h5" component="h5">
+									More <Link href="/gallery">examples</Link>
+								</Typography>
+							</CardActions>
+						</Card>
+					</Grid>
+				</Grid>
 			</Container>
 
 			<Footer />
