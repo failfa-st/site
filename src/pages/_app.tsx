@@ -9,7 +9,9 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { MDXProvider } from "@mdx-js/react";
 import Typography from "@mui/material/Typography";
+import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
+import { Session } from "next-auth/core/types";
 import { CookieConsentProvider } from "@use-cookie-consent/react";
 
 const CookieBanner = dynamic(async () => await import("@/components/cookie-banner"), {
@@ -66,13 +68,15 @@ const clientSideEmotionCache = createEmotionCache();
 
 export interface MyAppProps extends AppProps {
 	emotionCache?: EmotionCache;
+	session?: Session;
 }
 
 export default function MyApp(props: MyAppProps) {
-	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+	const { Component, emotionCache = clientSideEmotionCache, pageProps, session } = props;
 	const { pathname } = useRouter();
 	return (
-		<CookieConsentProvider
+		<SessionProvider session={session}>
+			<CookieConsentProvider
 			useCookieConsentHooksOptions={{
 				defaultConsent: {},
 			}}
@@ -113,5 +117,6 @@ export default function MyApp(props: MyAppProps) {
 				</CssVarsProvider>
 			</CacheProvider>
 		</CookieConsentProvider>
+		</SessionProvider>
 	);
 }

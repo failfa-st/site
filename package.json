@@ -23,7 +23,11 @@
     "toc": "npx markdown-toc README.md -i",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ncu": "npx npm-check-updates -u --dep='prod,dev'",
+    "ncu:minor": "npm run ncu -- -t minor",
+    "ncu:patch": "npm run ncu -- -t patch",
+    "tsc:noEmit": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/parser": "7.21.4",
@@ -49,6 +53,7 @@
     "monaco-editor": "0.37.1",
     "nanoid": "4.0.2",
     "next": "13.2.4",
+    "next-auth": "4.22.1",
     "openai": "^3.2.1",
     "prettier": "2.8.7",
     "react": "18.2.0",
@@ -61,7 +66,8 @@
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@types/react-syntax-highlighter": "^15.5.6",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "typescript": "5.0.4"
   },
   "husky": {
     "hooks": {

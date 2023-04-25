@@ -4,12 +4,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import { ReactNode } from "react";
 import Link from "next/link";
+import UserLogin from "./user-login";
 
 export default function Layout({ children }: { children: ReactNode }) {
 	return (
 		<>
 			<Box sx={{ minHeight: "100vh", a: { color: "currentColor", fontWeight: "bold" } }}>
-				<AppBar position="sticky">
+				<AppBar position="fixed" sx={{ background: "transparent" }} elevation={0}>
 					<Toolbar>
 						<Link href="/" aria-label="home" style={{ color: "inherit" }}>
 							<Box
@@ -23,6 +24,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 								/>
 							</Box>
 						</Link>
+						<UserLogin />
 					</Toolbar>
 				</AppBar>
 				{children}{" "}
