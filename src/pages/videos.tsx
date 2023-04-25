@@ -4,7 +4,10 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import YoutubeEmbed from "@/components/youtube-embed";
+import dynamic from "next/dynamic";
+const YoutubeEmbed = dynamic(async () => await import("@/components/youtube-embed"), {
+	ssr: false,
+});
 
 const ydIds = ["5_o53N6C0M0", "5JFSUOt08rc"];
 

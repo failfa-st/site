@@ -23,11 +23,13 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import UserLogin from "@/components/user-login";
-import YoutubeEmbed from "@/components/youtube-embed";
 import { Link } from "@/components/link";
 import dynamic from "next/dynamic";
 import Layout from "@/components/layout";
 
+const YoutubeEmbed = dynamic(async () => await import("@/components/youtube-embed"), {
+	ssr: false,
+});
 const CodesandboxEmbed = dynamic(async () => await import("@/components/codesandbox-embed"), {
 	ssr: false,
 });
@@ -183,7 +185,7 @@ export default function Home() {
 					>
 						<Card sx={{ flex: 1 }}>
 							<CardMedia>
-								<CodesandboxEmbed src="https://codesandbox.io/embed/matrix-code-8rgb8t"></CodesandboxEmbed>
+								<CodesandboxEmbed src="https://codesandbox.io/embed/failfa-st-fail4-coming-soon-sdty16"></CodesandboxEmbed>
 							</CardMedia>
 
 							<CardContent>
