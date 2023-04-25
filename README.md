@@ -12,6 +12,13 @@ AI-powered tools and prototypes are designed to streamline coding processes, ena
 experiment, learn, and iterate quickly. By combining cutting-edge technology with a forward-thinking
 approach, we aim to revolutionize the way developers create and interact with code.
 
+<!-- toc -->
+
+- [Development](#development)
+- [Sponsoring](#sponsoring)
+
+<!-- tocstop -->
+
 ## Development
 
 ```bash
@@ -19,3 +26,9 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Sponsoring
+
+Hosting is provided by Vercel, thank you very much! 
+
+<a href="https://vercel.com?utm_source=failfast&utm_campaign=oss"><img src="public/img/powered-by-vercel.svg" alt="powered by vercel" width="200"/></a>
