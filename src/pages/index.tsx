@@ -39,7 +39,6 @@ export default function Home() {
 		<>
 			<Container>
 				<UserLogin />
-
 				<Stack sx={{ alignItems: "center", height: "100vh" }}>
 					<Box
 						sx={{
@@ -133,15 +132,22 @@ export default function Home() {
 				</Stack>
 				<Stack sx={{ alignItems: "center" }}>
 					<Stack sx={{ textAlign: "center" }}>
-						<Typography component="p" maxWidth={450}>
-							failfa.st is an open-source community of volunteers who contribute to
-							various projects without any monetary compensation. Our primary goal is
-							to create open-source software that can be used by anyone for free.
+						<Typography
+							gutterBottom
+							variant="h3"
+							component="h3"
+							sx={{ textAlign: "center" }}
+						>
+							100 % Prompt Driven Development on Canvas2D
+						</Typography>
+						<Typography gutterBottom variant="h4" sx={{ textAlign: "center" }}>
+							Introducing fail4, our revolutionary new project set to redefine web
+							development!
 						</Typography>
 					</Stack>
 				</Stack>
 
-				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 8 }}>
+				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 4 }}>
 					<Grid
 						xs={1}
 						sx={{
@@ -172,14 +178,15 @@ export default function Home() {
 						</Card>
 					</Grid>
 				</Grid>
-				<Typography
-					gutterBottom
-					variant="h3"
-					component="h3"
-					sx={{ mt: 4, textAlign: "center" }}
-				>
-					100 % Prompt Driven Development on Canvas2D
-				</Typography>
+				<Stack sx={{ alignItems: "center", mt: 8 }}>
+					<Stack sx={{ textAlign: "center" }}>
+						<Typography component="p" maxWidth={450}>
+							failfa.st is an open-source community of volunteers who contribute to
+							various projects without any monetary compensation. Our primary goal is
+							to create open-source software that can be used by anyone for free.
+						</Typography>
+					</Stack>
+				</Stack>
 			</Container>
 
 			<Footer />
