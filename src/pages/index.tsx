@@ -141,7 +141,7 @@ export default function Home() {
 					</Stack>
 				</Stack>
 
-				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 6 }}>
+				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 8 }}>
 					<Grid
 						xs={1}
 						sx={{
@@ -154,24 +154,6 @@ export default function Home() {
 							<CardMedia>
 								<YoutubeEmbed ytId="wHgwfotfxe8" />
 							</CardMedia>
-
-							<CardContent>
-								<Typography gutterBottom variant="h3" component="h3">
-									100 % Prompt Driven Development on Canvas2D
-								</Typography>
-								<Typography>
-									We introduce our groundbreaking WebUI &quote;fail4&quote; for a
-									100% prompt driven web development using the OpenAI API.
-									Experience a new era of web design as we demonstrate the
-									incredible potential of GPT-3.5-turbo.
-								</Typography>
-							</CardContent>
-
-							<CardActions>
-								<Typography gutterBottom variant="h5" component="h5">
-									Explore all <Link href="/videos">Videos</Link>
-								</Typography>
-							</CardActions>
 						</Card>
 					</Grid>
 
@@ -187,24 +169,17 @@ export default function Home() {
 							<CardMedia>
 								<CodesandboxEmbed src="https://codesandbox.io/embed/failfa-st-fail4-coming-soon-sdty16"></CodesandboxEmbed>
 							</CardMedia>
-
-							<CardContent>
-								<Typography gutterBottom variant="h4" component="h3">
-									matrix code
-								</Typography>
-								<Typography>
-									fail4 generated the matrix anination with just one prompt
-								</Typography>
-							</CardContent>
-
-							<CardActions>
-								<Typography gutterBottom variant="h5" component="h5">
-									More <Link href="/gallery">examples</Link>
-								</Typography>
-							</CardActions>
 						</Card>
 					</Grid>
 				</Grid>
+				<Typography
+					gutterBottom
+					variant="h3"
+					component="h3"
+					sx={{ mt: 4, textAlign: "center" }}
+				>
+					100 % Prompt Driven Development on Canvas2D
+				</Typography>
 			</Container>
 
 			<Footer />
