@@ -18,20 +18,7 @@ export default function Page() {
 		<Layout>
 			<Container sx={{ mt: 6 }}>
 				<Typography variant="h1">100% Prompt driven Codesandboxes</Typography>
-				<Typography variant="h2">
-					Welcome to the Future of Coding: &quot;fail4&quot; Generated Codesandboxes!
-				</Typography>
-				<Typography my={2}>
-					Dive into the world of AI-driven coding with &quot;fail4&quot;, our innovative
-					prompt-driven tool that revolutionizes the way you create canvas experiments.
-					Customize your code generation with options like temperature and watch as the AI
-					crafts fully interactive codesandboxes tailored to your needs.
-				</Typography>
-				<Typography my={2}>
-					Explore, experiment, and elevate your coding skills with our diverse collection
-					of &quot;fail4&quot; generated codesandboxes. Embrace the future of AI-powered
-					development and unleash your creativity today!
-				</Typography>
+
 				{/*<Link passHref legacyBehavior href="/projects/fail4">
 					<Button
 						disableElevation

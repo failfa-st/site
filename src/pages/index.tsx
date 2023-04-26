@@ -2,7 +2,18 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import { Container, List, ListItem, ListItemButton, Typography } from "@mui/material";
+import {
+	Card,
+	CardActions,
+	CardContent,
+	CardMedia,
+	Container,
+	Grid,
+	List,
+	ListItem,
+	ListItemButton,
+	Typography,
+} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import MuiLink from "@mui/material/Link";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -12,17 +23,22 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import UserLogin from "@/components/user-login";
+import { Link } from "@/components/link";
+import dynamic from "next/dynamic";
+import Layout from "@/components/layout";
+
+const YoutubeEmbed = dynamic(async () => await import("@/components/youtube-embed"), {
+	ssr: false,
+});
+const CodesandboxEmbed = dynamic(async () => await import("@/components/codesandbox-embed"), {
+	ssr: false,
+});
 
 export default function Home() {
-	useEffect(() => {
-		void fetch("/api/test");
-	}, []);
-
 	return (
 		<>
 			<Container>
 				<UserLogin />
-
 				<Stack sx={{ alignItems: "center", height: "100vh" }}>
 					<Box
 						sx={{
@@ -116,11 +132,90 @@ export default function Home() {
 				</Stack>
 				<Stack sx={{ alignItems: "center" }}>
 					<Stack sx={{ textAlign: "center" }}>
-						<Typography component="p" maxWidth={450}>
-							failfa.st is an open-source collective that does not generate any
-							income. We are a community of volunteers who contribute to various
-							projects without any monetary compensation. Our primary goal is to
-							create open-source software that can be used by anyone for free.
+						<Typography gutterBottom variant="h1" component="h3">
+							100 % Prompt Driven Development on Canvas2D
+						</Typography>
+						<Typography gutterBottom variant="h4">
+							Preview of fail4, our revolutionary open-source project set to redefine
+							web development!
+						</Typography>
+
+						<Typography gutterBottom variant="body1">
+							Currently in a private beta, will be released soon on GitHub under AGPL.
+						</Typography>
+					</Stack>
+				</Stack>
+
+				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 4 }}>
+					<Grid
+						xs={1}
+						item={true}
+						sx={{
+							alignItems: "stretch",
+							display: "flex",
+							justifyContent: "stretch",
+						}}
+					>
+						<Card sx={{ flex: 1 }}>
+							<CardMedia>
+								<YoutubeEmbed ytId="wHgwfotfxe8" />
+							</CardMedia>
+						</Card>
+					</Grid>
+
+					<Grid
+						xs={1}
+						item={true}
+						sx={{
+							alignItems: "stretch",
+							display: "flex",
+							justifyContent: "stretch",
+						}}
+					>
+						<Card sx={{ flex: 1 }}>
+							<CardMedia>
+								<CodesandboxEmbed src="https://codesandbox.io/embed/failfa-st-fail4-coming-soon-sdty16"></CodesandboxEmbed>
+							</CardMedia>
+						</Card>
+					</Grid>
+				</Grid>
+
+				<Stack sx={{ alignItems: "center", mt: 8 }}>
+					<Stack sx={{ textAlign: "center" }}>
+						<Typography
+							gutterBottom
+							variant="h1"
+							component="h3"
+							sx={{ textAlign: "center" }}
+						>
+							More projects
+						</Typography>
+
+						<Typography component="p" maxWidth={650}>
+							Check out <Link href="https://github.com/failfa-st/fail1">fail1</Link>{" "}
+							and <Link href="https://github.com/failfa-st/fail2">fail2</Link> to get
+							an idea how Prompt Driven Development looks like. You can run these two
+							projects on our computer, you only need an{" "}
+							<Link href="https://openai.com">OpenAI</Link> API key.
+						</Typography>
+					</Stack>
+				</Stack>
+
+				<Stack sx={{ alignItems: "center", mt: 8 }}>
+					<Stack sx={{ textAlign: "center" }}>
+						<Typography
+							gutterBottom
+							variant="h1"
+							component="h3"
+							sx={{ textAlign: "center" }}
+						>
+							About us
+						</Typography>
+
+						<Typography component="p" maxWidth={650}>
+							failfa.st is an open-source community of volunteers who contribute to
+							various projects without any monetary compensation. Our primary goal is
+							to create open-source software that can be used by anyone for free.
 						</Typography>
 					</Stack>
 				</Stack>
