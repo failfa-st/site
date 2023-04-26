@@ -132,17 +132,16 @@ export default function Home() {
 				</Stack>
 				<Stack sx={{ alignItems: "center" }}>
 					<Stack sx={{ textAlign: "center" }}>
-						<Typography
-							gutterBottom
-							variant="h3"
-							component="h3"
-							sx={{ textAlign: "center" }}
-						>
+						<Typography gutterBottom variant="h1" component="h3">
 							100 % Prompt Driven Development on Canvas2D
 						</Typography>
-						<Typography gutterBottom variant="h4" sx={{ textAlign: "center" }}>
-							Introducing fail4, our revolutionary new project set to redefine web
-							development!
+						<Typography gutterBottom variant="h4">
+							Preview of fail4, our revolutionary open-source project set to redefine
+							web development!
+						</Typography>
+
+						<Typography gutterBottom variant="body1">
+							Currently in a private beta, will be released soon on GitHub under AGPL.
 						</Typography>
 					</Stack>
 				</Stack>
@@ -150,6 +149,7 @@ export default function Home() {
 				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 4 }}>
 					<Grid
 						xs={1}
+						item={true}
 						sx={{
 							alignItems: "stretch",
 							display: "flex",
@@ -165,6 +165,7 @@ export default function Home() {
 
 					<Grid
 						xs={1}
+						item={true}
 						sx={{
 							alignItems: "stretch",
 							display: "flex",
@@ -178,9 +179,40 @@ export default function Home() {
 						</Card>
 					</Grid>
 				</Grid>
+
 				<Stack sx={{ alignItems: "center", mt: 8 }}>
 					<Stack sx={{ textAlign: "center" }}>
-						<Typography component="p" maxWidth={450}>
+						<Typography
+							gutterBottom
+							variant="h1"
+							component="h3"
+							sx={{ textAlign: "center" }}
+						>
+							More projects
+						</Typography>
+
+						<Typography component="p" maxWidth={650}>
+							Check out <Link href="https://github.com/failfa-st/fail1">fail1</Link>{" "}
+							and <Link href="https://github.com/failfa-st/fail2">fail2</Link> to get
+							an idea how Prompt Driven Development looks like. You can run these two
+							projects on our computer, you only need an{" "}
+							<Link href="https://openai.com">OpenAI</Link> API key.
+						</Typography>
+					</Stack>
+				</Stack>
+
+				<Stack sx={{ alignItems: "center", mt: 8 }}>
+					<Stack sx={{ textAlign: "center" }}>
+						<Typography
+							gutterBottom
+							variant="h1"
+							component="h3"
+							sx={{ textAlign: "center" }}
+						>
+							About us
+						</Typography>
+
+						<Typography component="p" maxWidth={650}>
 							failfa.st is an open-source community of volunteers who contribute to
 							various projects without any monetary compensation. Our primary goal is
 							to create open-source software that can be used by anyone for free.
