@@ -194,7 +194,7 @@ export default function Home() {
 						<Typography component="p" maxWidth={650}>
 							Check out <Link href="https://github.com/failfa-st/fail1">fail1</Link>{" "}
 							and <Link href="https://github.com/failfa-st/fail2">fail2</Link> to get
-							an idea how Prompt Driven Development looks like. You can run these two
+							an idea what Prompt Driven Development looks like. You can run these two
 							projects on our computer, you only need an{" "}
 							<Link href="https://openai.com">OpenAI</Link> API key.
 						</Typography>
