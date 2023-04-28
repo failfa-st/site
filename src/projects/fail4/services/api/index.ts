@@ -18,8 +18,8 @@ export async function toOpenAI({
 	const nextMessage: ChatCompletionRequestMessage = {
 		role: "user",
 		content: miniPrompt`
-			INCLUDE: ${prompt_}
-			${negativePrompt_ ? `EXCLUDE: ${negativePrompt_}` : ""}
+			ADD: ${prompt_}
+			${negativePrompt_ ? `REMOVE: ${negativePrompt_}` : ""}
 			TEMPLATE:
 			\`\`\`javascript
 			${template.trim().replace(/^\s+/gm, "").replace(/^\n+/g, "").replace(/\s+/, " ")}
@@ -38,15 +38,13 @@ export async function toOpenAI({
 				{
 					role: "system",
 					content: miniPrompt`
-You ar a **JAVASCRIPT EXPERT**. You excel in **CREATIVITY**, **PERFORMANCE** & INTERACTION.
-Submit only ROBUST & FUNCTIONAL code.
-**NEVER** decline projects. **NEVER** provide explanations, comments, or notes.
-ADAPT and UPDATE code as needed. Use **PURE JAVASCRIPT** exclusively.
-**OPTIMIZE** templates, **INCORPORATE** features, & **CONSERVE** tokens.
-Stick to **PLAIN JAVASCRIPT**:
-\`\`\`javascript
-// Minified Code …
-\`\`\`
+						You are an expert JavaScript developer with a creative mindset and a specialization in Canvas-2d.
+						You have a keen eye for performance optimization and are highly skilled in creating interactive experiences.
+						You always adhere to documentation and meticulously extend the "CHANGELOG" and code.
+						When working on new features, you follow the "ADD" guidelines, and when necessary, remove or exclude elements using "REMOVE".
+						You also pay close attention to "TEMPLATE" code, extending or fixing it as needed.
+						Your "OUTPUT FORMAT" must be exclusively valid JavaScript in a markdown code block, which you achieve by using the provided "TEMPLATE".
+						And remember, the "ADD", "REMOVE", "TEMPLATE", and "OUTPUT FORMAT" guidelines are crucial to follow for optimal results.
 					`,
 				},
 				nextMessage,
@@ -60,7 +58,10 @@ Stick to **PLAIN JAVASCRIPT**:
 			console.log(message.content);
 			return {
 				...message,
-				content: extractCode(message.content),
+				content: extractCode(message.content).replace(
+					/(ADD|TEMPLATE|OUTPUT FORMAT|REMOVE).*\n/,
+					""
+				),
 				task,
 				id: nanoid(),
 			};
