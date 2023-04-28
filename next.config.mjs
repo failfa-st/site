@@ -18,17 +18,6 @@ const nextConfig = {
 	reactStrictMode: true,
 	pageExtensions: ["ts", "tsx", "mdx"],
 	swcMinify: true,
-	redirects: () => {
-		return process.env.NODE_ENV === "production"
-			? [
-					{
-						source: "/projects/:path*",
-						destination: "/",
-						permanent: false,
-					},
-			  ]
-			: [];
-	},
 };
 
 export default withMDX(nextConfig);
