@@ -57,6 +57,7 @@ import { wrappers } from "@/projects/fail4/utils/share";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import Tooltip from "@mui/material/Tooltip";
 import { fontMono } from "@/lib/theme";
+import { UserMenu } from "@/components/user-login";
 const MonacoEditor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
 export interface ShareProps {
@@ -132,7 +133,6 @@ export function InfoMenu() {
 	return (
 		<div>
 			<IconButton
-				edge="end"
 				aria-label="Info"
 				id="infoMenu-button"
 				aria-controls={open ? "infoMenu-menu" : undefined}
@@ -157,20 +157,28 @@ export function InfoMenu() {
 				}}
 			>
 				<MenuItem
-					onClick={() => {
-						router.push("/legal/data-policy");
+					onClick={async () => {
+						await router.push("/legal/data-policy");
 						handleClose();
 					}}
 				>
 					Data Policy
 				</MenuItem>
 				<MenuItem
-					onClick={() => {
-						router.push("/legal/imprint");
+					onClick={async () => {
+						await router.push("/legal/imprint");
 						handleClose();
 					}}
 				>
 					Imprint
+				</MenuItem>
+				<MenuItem
+					onClick={async () => {
+						await router.push("/legal/cookie-policy");
+						handleClose();
+					}}
+				>
+					Cookie Policy
 				</MenuItem>
 			</Menu>
 		</div>
@@ -224,7 +232,6 @@ export default function Home() {
 					case "answer":
 						connection.current = true;
 						setLoadingLive(false);
-
 						break;
 					default:
 						break;
@@ -483,7 +490,10 @@ export default function Home() {
 												<MenuItem value="gpt-3.5-turbo">
 													GPT 3.5 turbo
 												</MenuItem>
-												<MenuItem disabled value="gpt-4">
+												<MenuItem
+													disabled={process.env.NODE_ENV === "production"}
+													value="gpt-4"
+												>
 													GPT 4
 												</MenuItem>
 											</Select>
@@ -518,7 +528,7 @@ export default function Home() {
 										<TollIcon />
 										<Slider
 											marks
-											disabled
+											disabled={process.env.NODE_ENV === "production"}
 											id="maxTokens"
 											name="maxTokens"
 											min={1024}
@@ -647,6 +657,7 @@ export default function Home() {
 							<Box sx={{ flex: 1 }} />
 
 							<InfoMenu />
+							<UserMenu />
 						</Toolbar>
 					</AppBar>
 					{loadingLive && (
@@ -672,6 +683,14 @@ export default function Home() {
 							border: 0,
 							overflow: "hidden",
 							visibility: loadingLive ? "hidden" : undefined,
+						}}
+						onLoad={() => {
+							if (current) {
+								setLoadingLive(true);
+								setTries(1);
+								connection.current = false;
+								call({ template: current.content });
+							}
 						}}
 						src="/projects/fail4/live"
 					/>
