@@ -1,13 +1,65 @@
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useState } from "react";
+import { signOut, useSession } from "next-auth/react";
+import { MouseEvent, useState } from "react";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
-export default function UserLogin() {
-	const [showLogOut, setShowLogOut] = useState(false);
+export function UserMenu() {
 	const { data: session } = useSession();
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const open = Boolean(anchorEl);
+	const handleClick = (event: MouseEvent<HTMLElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	return (
+		session && (
+			<>
+				<IconButton
+					edge="end"
+					aria-label="Info"
+					id="infoMenu-button"
+					aria-controls={open ? "infoMenu-menu" : undefined}
+					aria-expanded={open ? "true" : undefined}
+					aria-haspopup="true"
+					sx={{ p: 0 }}
+					onClick={handleClick}
+				>
+					<Avatar src={session.user?.image ?? undefined} sx={{ height: 32, width: 32 }} />
+				</IconButton>
+				<Menu
+					id="infoMenu-menu"
+					MenuListProps={{
+						"aria-labelledby": "infoMenu-button",
+					}}
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleClose}
+					PaperProps={{
+						style: {
+							width: "20ch",
+						},
+					}}
+				>
+					<MenuItem
+						onClick={() => {
+							void signOut();
+						}}
+					>
+						Logout
+					</MenuItem>
+				</Menu>
+			</>
+		)
+	);
+}
+export default function UserLogin() {
 	return (
 		<Stack
 			sx={{
@@ -19,36 +71,7 @@ export default function UserLogin() {
 				right: 20,
 			}}
 		>
-			{session?.user ? (
-				<>
-					<Avatar
-						src={session?.user.image as string}
-						onClick={() => {
-							void setShowLogOut(previousValue => !previousValue);
-						}}
-					/>
-					{showLogOut ? (
-						<Button
-							sx={{ mt: 1 }}
-							onClick={() => {
-								void signOut();
-							}}
-						>
-							Logout
-						</Button>
-					) : null}
-				</>
-			) : (
-				<>
-					<Button
-						onClick={() => {
-							void signIn();
-						}}
-					>
-						Login
-					</Button>
-				</>
-			)}
+			<UserMenu />
 		</Stack>
 	);
 }

@@ -2,44 +2,33 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import {
-	Card,
-	CardActions,
-	CardContent,
-	CardMedia,
-	Container,
-	Grid,
-	List,
-	ListItem,
-	ListItemButton,
-	Typography,
-} from "@mui/material";
-import Avatar from "@mui/material/Avatar";
+import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 import MuiLink from "@mui/material/Link";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
 import UserLogin from "@/components/user-login";
 import { Link } from "@/components/link";
+import NextLink from "next/link";
 import dynamic from "next/dynamic";
-import Layout from "@/components/layout";
 
 const YoutubeEmbed = dynamic(async () => await import("@/components/youtube-embed"), {
 	ssr: false,
 });
+
 const CodesandboxEmbed = dynamic(async () => await import("@/components/codesandbox-embed"), {
 	ssr: false,
 });
 
 export default function Home() {
+	const { data: session } = useSession();
 	return (
 		<>
 			<Container>
 				<UserLogin />
-				<Stack sx={{ alignItems: "center", height: "100vh" }}>
+				<Stack sx={{ alignItems: "center", minHeight: "100vh" }}>
 					<Box
 						sx={{
 							flex: 1,
@@ -66,17 +55,30 @@ export default function Home() {
 							/>
 						</Box>
 					</Box>
-					{/* <Link passHref legacyBehavior href="/projects/fail4">
+					<Typography mb={4}>Login to try our new tool &quot;fail4&quot; now</Typography>
+					{session ? (
+						<NextLink passHref legacyBehavior href="/projects/fail4">
+							<Button
+								disableElevation
+								disableTouchRipple
+								component="a"
+								color="primary"
+								variant="contained"
+							>
+								Try fail4 now
+							</Button>
+						</NextLink>
+					) : (
 						<Button
-							disableElevation
-							disableTouchRipple
-							component="a"
-							color="primary"
-							variant="contained"
+							variant="outlined"
+							startIcon={<GitHubIcon />}
+							onClick={() => {
+								void signIn("github", { callbackUrl: "/projects/fail4" });
+							}}
 						>
-							Try fail4 now
+							Login with GitHub
 						</Button>
-					</Link> */}
+					)}
 
 					<Stack sx={{ textAlign: "center", pt: 4, pb: 8 }}>
 						<Typography variant="h2" component="h1" mb={2}>
@@ -90,6 +92,7 @@ export default function Home() {
 							<MuiLink
 								href="https://github.com/failfa-st"
 								target="_blank"
+								aria-label="GitHub"
 								rel="noopener noreferrer"
 							>
 								<GitHubIcon />
@@ -98,6 +101,7 @@ export default function Home() {
 							<MuiLink
 								href="https://codepen.io/failfa-st"
 								target="_blank"
+								aria-label="Codepen"
 								rel="noopener noreferrer"
 							>
 								<SvgIcon viewBox="0 0 24 24">
@@ -107,6 +111,7 @@ export default function Home() {
 							<MuiLink
 								href="https://twitter.com/failfa_st"
 								target="_blank"
+								aria-label="Twitter"
 								rel="noopener noreferrer"
 							>
 								<TwitterIcon />
@@ -114,6 +119,7 @@ export default function Home() {
 							<MuiLink
 								href="https://www.youtube.com/@failfa-st"
 								target="_blank"
+								aria-label="Youtube"
 								rel="noopener noreferrer"
 							>
 								<YouTubeIcon />
@@ -121,6 +127,7 @@ export default function Home() {
 							<MuiLink
 								href="https://discord.com/invite/m3TBB9XEkb"
 								target="_blank"
+								aria-label="Discord"
 								rel="noopener noreferrer"
 							>
 								<SvgIcon viewBox="0 0 127.14 96.36">

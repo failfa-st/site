@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import NextLink from "next/link";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 const YoutubeEmbed = dynamic(async () => await import("@/components/youtube-embed"), {
 	ssr: false,
@@ -20,7 +20,7 @@ export default function Page() {
 			<Container sx={{ mt: 6 }}>
 				<Typography variant="h1">Videos</Typography>
 
-				{/*	<Link passHref legacyBehavior href="/projects/fail4">
+				<NextLink passHref legacyBehavior href="/projects/fail4">
 					<Button
 						disableElevation
 						disableTouchRipple
@@ -30,7 +30,7 @@ export default function Page() {
 					>
 						Try fail4 now
 					</Button>
-				</Link>*/}
+				</NextLink>
 				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 6 }}>
 					{ydIds.map(ytId => (
 						<Grid
@@ -57,10 +57,7 @@ export default function Page() {
 							alignItems: "center",
 						}}
 					>
-						<Typography variant="h2"></Typography>
-						<br />
-
-						<Link
+						<NextLink
 							passHref
 							legacyBehavior
 							href="https://www.youtube.com/channel/UCe7AJWRNZDNMZoH6FNvJKfg"
@@ -70,11 +67,11 @@ export default function Page() {
 								disableTouchRipple
 								component="a"
 								color="primary"
+								endIcon={<YouTubeIcon fontSize="large" />}
 							>
 								Find us on YouTube
-								<YouTubeIcon fontSize="large" />
 							</Button>
-						</Link>
+						</NextLink>
 					</Grid>
 				</Grid>
 			</Container>

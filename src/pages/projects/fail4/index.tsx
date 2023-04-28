@@ -57,6 +57,9 @@ import { wrappers } from "@/projects/fail4/utils/share";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import Tooltip from "@mui/material/Tooltip";
 import { fontMono } from "@/lib/theme";
+import { UserMenu } from "@/components/user-login";
+import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 const MonacoEditor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
 export interface ShareProps {
@@ -69,7 +72,7 @@ function Codesandbox({ title, content }: ShareProps) {
 		<Tooltip title="Open in Codesandbox">
 			<IconButton
 				color="primary"
-				ari-label="Codsandbox"
+				aria-label="Codsandbox"
 				onClick={async () => {
 					const { data } = await axios.post<string>("/api/url/codesandbox", {
 						content,
@@ -132,7 +135,6 @@ export function InfoMenu() {
 	return (
 		<div>
 			<IconButton
-				edge="end"
 				aria-label="Info"
 				id="infoMenu-button"
 				aria-controls={open ? "infoMenu-menu" : undefined}
@@ -157,20 +159,28 @@ export function InfoMenu() {
 				}}
 			>
 				<MenuItem
-					onClick={() => {
-						router.push("/legal/data-policy");
+					onClick={async () => {
+						await router.push("/legal/data-policy");
 						handleClose();
 					}}
 				>
 					Data Policy
 				</MenuItem>
 				<MenuItem
-					onClick={() => {
-						router.push("/legal/imprint");
+					onClick={async () => {
+						await router.push("/legal/imprint");
 						handleClose();
 					}}
 				>
 					Imprint
+				</MenuItem>
+				<MenuItem
+					onClick={async () => {
+						await router.push("/legal/cookie-policy");
+						handleClose();
+					}}
+				>
+					Cookie Policy
 				</MenuItem>
 			</Menu>
 		</div>
@@ -224,7 +234,6 @@ export default function Home() {
 					case "answer":
 						connection.current = true;
 						setLoadingLive(false);
-
 						break;
 					default:
 						break;
@@ -483,7 +492,10 @@ export default function Home() {
 												<MenuItem value="gpt-3.5-turbo">
 													GPT 3.5 turbo
 												</MenuItem>
-												<MenuItem disabled value="gpt-4">
+												<MenuItem
+													disabled={process.env.NODE_ENV === "production"}
+													value="gpt-4"
+												>
 													GPT 4
 												</MenuItem>
 											</Select>
@@ -518,7 +530,7 @@ export default function Home() {
 										<TollIcon />
 										<Slider
 											marks
-											disabled
+											disabled={process.env.NODE_ENV === "production"}
 											id="maxTokens"
 											name="maxTokens"
 											min={1024}
@@ -647,6 +659,7 @@ export default function Home() {
 							<Box sx={{ flex: 1 }} />
 
 							<InfoMenu />
+							<UserMenu />
 						</Toolbar>
 					</AppBar>
 					{loadingLive && (
@@ -673,6 +686,14 @@ export default function Home() {
 							overflow: "hidden",
 							visibility: loadingLive ? "hidden" : undefined,
 						}}
+						onLoad={() => {
+							if (current) {
+								setLoadingLive(true);
+								setTries(1);
+								connection.current = false;
+								call({ template: current.content });
+							}
+						}}
 						src="/projects/fail4/live"
 					/>
 				</Stack>
@@ -680,3 +701,20 @@ export default function Home() {
 		</>
 	);
 }
+
+export const getServerSideProps: GetServerSideProps = async context => {
+	const session = await getSession(context);
+
+	if (session) {
+		return {
+			props: {},
+		};
+	}
+
+	return {
+		redirect: {
+			permanent: false,
+			destination: "/auth/signin",
+		},
+	};
+};

@@ -9,8 +9,8 @@ export async function toOpenAI({
 	temperature = "0.2",
 	template = "",
 	//
-	// model = "gpt-3.5-turbo",
-	// maxTokens = "2048",
+	model = "gpt-3.5-turbo",
+	maxTokens = "2048",
 }) {
 	const negativePrompt_ = negativePrompt.trim();
 	const prompt_ = prompt.trim();
@@ -21,7 +21,7 @@ export async function toOpenAI({
 			ADD: ${prompt_}
 			${negativePrompt_ ? `REMOVE: ${negativePrompt_}` : ""}
 			TEMPLATE:
-			\`\`\`js
+			\`\`\`javascript
 			${template.trim().replace(/^\s+/gm, "").replace(/^\n+/g, "").replace(/\s+/, " ")}
 			\`\`\`
 			`,
@@ -31,7 +31,8 @@ export async function toOpenAI({
 
 	try {
 		const response = await openai.createChatCompletion({
-			model: "gpt-3.5-turbo",
+			model: process.env.NODE_ENV === "production" ? "gpt-3.5-turbo" : model,
+			max_tokens: process.env.NODE_ENV === "production" ? 2048 : Number.parseInt(maxTokens),
 			temperature: Number.parseFloat(temperature),
 			messages: [
 				{
@@ -48,13 +49,13 @@ export async function toOpenAI({
 				},
 				nextMessage,
 			],
-
-			max_tokens: 2048,
 		});
 
 		const { message } = response.data.choices[0];
 
 		if (message) {
+			console.log("ORIGINAL OUTPUT");
+			console.log(message.content);
 			return {
 				...message,
 				content: extractCode(message.content).replace(
