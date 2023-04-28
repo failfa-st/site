@@ -72,7 +72,7 @@ function Codesandbox({ title, content }: ShareProps) {
 		<Tooltip title="Open in Codesandbox">
 			<IconButton
 				color="primary"
-				ari-label="Codsandbox"
+				aria-label="Codsandbox"
 				onClick={async () => {
 					const { data } = await axios.post<string>("/api/url/codesandbox", {
 						content,
