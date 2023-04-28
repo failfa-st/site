@@ -28,7 +28,7 @@ export default function Home() {
 		<>
 			<Container>
 				<UserLogin />
-				<Stack sx={{ alignItems: "center", height: "100vh" }}>
+				<Stack sx={{ alignItems: "center", minHeight: "100vh" }}>
 					<Box
 						sx={{
 							flex: 1,
@@ -55,6 +55,7 @@ export default function Home() {
 							/>
 						</Box>
 					</Box>
+					<Typography mb={4}>Login to try our new tool &quot;fail4&quot; now</Typography>
 					{session ? (
 						<NextLink passHref legacyBehavior href="/projects/fail4">
 							<Button

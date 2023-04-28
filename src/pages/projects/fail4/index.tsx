@@ -58,6 +58,8 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import Tooltip from "@mui/material/Tooltip";
 import { fontMono } from "@/lib/theme";
 import { UserMenu } from "@/components/user-login";
+import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 const MonacoEditor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
 export interface ShareProps {
@@ -699,3 +701,20 @@ export default function Home() {
 		</>
 	);
 }
+
+export const getServerSideProps: GetServerSideProps = async context => {
+	const session = await getSession(context);
+
+	if (session) {
+		return {
+			props: {},
+		};
+	}
+
+	return {
+		redirect: {
+			permanent: false,
+			destination: "/auth/signin",
+		},
+	};
+};

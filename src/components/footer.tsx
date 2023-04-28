@@ -3,7 +3,6 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import MuiLink from "@mui/material/Link";
 import { Link } from "@/components/link";
-import Image from "next/image";
 
 const Footer = () => {
 	return (
@@ -58,6 +57,7 @@ const Footer = () => {
 						href="https://vercel.com?utm_source=failfast&utm_campaign=oss"
 						target="_blank"
 						rel="noopener noreferrer"
+						aria-label="Vercel"
 					>
 						<svg
 							width="212"
