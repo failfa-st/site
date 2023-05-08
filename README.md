@@ -2,6 +2,8 @@
 
 <p align="center"><img src="assets/logo.png" alt="logo" width="200"/></p>
 
+[![Discord](https://img.shields.io/discord/1091306623819059300?color=7289da&label=Discord&logo=discord&logoColor=fff&style=for-the-badge)](https://discord.com/invite/m3TBB9XEkb)
+
 Welcome to the official repository of failfa.st, where we embrace rapid AI-driven innovation and
 development to create groundbreaking products. Our ethos centers on failing fast to save time,
 empowering developers to build extraordinary applications while constantly pushing the boundaries of
