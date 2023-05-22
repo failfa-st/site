@@ -55,30 +55,6 @@ export default function Home() {
 							/>
 						</Box>
 					</Box>
-					<Typography mb={4}>Login to try our new tool &quot;fail4&quot; now</Typography>
-					{session ? (
-						<NextLink passHref legacyBehavior href="/projects/fail4">
-							<Button
-								disableElevation
-								disableTouchRipple
-								component="a"
-								color="primary"
-								variant="contained"
-							>
-								Try fail4 now
-							</Button>
-						</NextLink>
-					) : (
-						<Button
-							variant="outlined"
-							startIcon={<GitHubIcon />}
-							onClick={() => {
-								void signIn("github", { callbackUrl: "/projects/fail4" });
-							}}
-						>
-							Login with GitHub
-						</Button>
-					)}
 
 					<Stack sx={{ textAlign: "center", pt: 4, pb: 8 }}>
 						<Typography variant="h2" component="h1" mb={2}>
