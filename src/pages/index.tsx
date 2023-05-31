@@ -1,33 +1,58 @@
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Footer from "@/components/footer";
-import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import MuiLink from "@mui/material/Link";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import UserLogin from "@/components/user-login";
 import { Link } from "@/components/link";
-import NextLink from "next/link";
-import dynamic from "next/dynamic";
+import ProjectsGrid, { Project } from "@/components/projects-grid";
 
-const YoutubeEmbed = dynamic(async () => await import("@/components/youtube-embed"), {
-	ssr: false,
-});
+const projects: Project[] = [
+	{
+		title: "hyv",
+		content:
+			"An innovative AI collaboration library designed to streamline your software development journey. It simplifies complex tasks by breaking them down into manageable pieces, offering seamless integration with a variety of technologies, models, and adapters.",
+		color: "hsl(200, 80%, 60%)",
+		link: "https://github.com/failfa-st/hyv",
+		type: "repo",
+	},
+	{
+		title: "2D GameCreator",
+		content:
+			"Takes your game concept and turns it into a playable 2D game directly in your browser. Ideal for quick prototyping and creating simple games.",
+		color: "hsl(0, 80%, 60%)",
+		link: "https://huggingface.co/spaces/failfast/2D-GameCreator",
+		type: "demo",
+	},
+];
 
-const CodesandboxEmbed = dynamic(async () => await import("@/components/codesandbox-embed"), {
-	ssr: false,
-});
+const experiments: Project[] = [
+	{
+		title: "fail1",
+		content: "100% Prompt Driven Development: JavaScript Projects (GPT)",
+		color: "hsl(30, 80%, 60%)",
+		link: "https://github.com/failfa-st/fail1",
+		type: "repo",
+	},
+	{
+		title: "fail2",
+		content: "100% Prompt Driven Development: JavaScript Canvas2D (GPT)",
+		color: "hsl(80, 80%, 30%)",
+		link: "https://github.com/failfa-st/fail2",
+		type: "repo",
+	},
+];
 
 export default function Home() {
 	const { data: session } = useSession();
 	return (
 		<>
 			<Container>
-				<UserLogin />
 				<Stack sx={{ alignItems: "center", minHeight: "100vh" }}>
 					<Box
 						sx={{
@@ -56,7 +81,7 @@ export default function Home() {
 						</Box>
 					</Box>
 
-					<Stack sx={{ textAlign: "center", pt: 4, pb: 8 }}>
+					<Stack sx={{ textAlign: "center", pt: 0, pb: 8 }}>
 						<Typography variant="h2" component="h1" mb={2}>
 							failfa.st
 						</Typography>
@@ -64,6 +89,12 @@ export default function Home() {
 						<Typography variant="h4" component="h2" mb={4}>
 							Rapid AI-powered Development & Innovation
 						</Typography>
+
+						<Typography component="p" maxWidth={650} mb={4}>
+							We are a community who contributes to various open-source projects. Our
+							primary goal is to create software that can be used by anyone for free.
+						</Typography>
+
 						<Stack sx={{ flexDirection: "row", gap: 2, justifyContent: "center" }}>
 							<MuiLink
 								href="https://github.com/failfa-st"
@@ -113,92 +144,37 @@ export default function Home() {
 						</Stack>
 					</Stack>
 				</Stack>
-				<Stack sx={{ alignItems: "center" }}>
+
+				<Typography variant="h1" component="h2">
+					Projects
+				</Typography>
+
+				<ProjectsGrid projects={projects} />
+
+				<Typography variant="h1" component="h2">
+					Experiments
+				</Typography>
+
+				<ProjectsGrid projects={experiments} />
+
+				<Stack sx={{ alignItems: "center", mt: 20 }}>
 					<Stack sx={{ textAlign: "center" }}>
-						<Typography gutterBottom variant="h1" component="h3">
-							100 % Prompt Driven Development on Canvas2D
-						</Typography>
-						<Typography gutterBottom variant="h4">
-							Preview of fail4, our revolutionary open-source project set to redefine
-							web development!
+						<Typography variant="h2" component="h3" sx={{ mb: 8 }}>
+							Join our community on Discord to talk about anything AI!
 						</Typography>
 
-						<Typography gutterBottom variant="body1">
-							Currently in a private beta, will be released soon on GitHub under AGPL.
-						</Typography>
-					</Stack>
-				</Stack>
-
-				<Grid container columns={{ xs: 1, md: 2 }} spacing={2} sx={{ mt: 4 }}>
-					<Grid
-						xs={1}
-						item={true}
-						sx={{
-							alignItems: "stretch",
-							display: "flex",
-							justifyContent: "stretch",
-						}}
-					>
-						<Card sx={{ flex: 1 }}>
-							<CardMedia>
-								<YoutubeEmbed ytId="wHgwfotfxe8" />
-							</CardMedia>
-						</Card>
-					</Grid>
-
-					<Grid
-						xs={1}
-						item={true}
-						sx={{
-							alignItems: "stretch",
-							display: "flex",
-							justifyContent: "stretch",
-						}}
-					>
-						<Card sx={{ flex: 1 }}>
-							<CardMedia>
-								<CodesandboxEmbed src="https://codesandbox.io/embed/failfa-st-fail4-coming-soon-sdty16"></CodesandboxEmbed>
-							</CardMedia>
-						</Card>
-					</Grid>
-				</Grid>
-
-				<Stack sx={{ alignItems: "center", mt: 8 }}>
-					<Stack sx={{ textAlign: "center" }}>
-						<Typography
-							gutterBottom
-							variant="h1"
-							component="h3"
-							sx={{ textAlign: "center" }}
-						>
-							More projects
-						</Typography>
-
-						<Typography component="p" maxWidth={650}>
-							Check out <Link href="https://github.com/failfa-st/fail1">fail1</Link>{" "}
-							and <Link href="https://github.com/failfa-st/fail2">fail2</Link> to get
-							an idea what Prompt Driven Development looks like. You can run these two
-							projects on our computer, you only need an{" "}
-							<Link href="https://openai.com">OpenAI</Link> API key.
-						</Typography>
-					</Stack>
-				</Stack>
-
-				<Stack sx={{ alignItems: "center", mt: 8 }}>
-					<Stack sx={{ textAlign: "center" }}>
-						<Typography
-							gutterBottom
-							variant="h1"
-							component="h3"
-							sx={{ textAlign: "center" }}
-						>
-							About us
-						</Typography>
-
-						<Typography component="p" maxWidth={650}>
-							failfa.st is an open-source community of volunteers who contribute to
-							various projects without any monetary compensation. Our primary goal is
-							to create open-source software that can be used by anyone for free.
+						<Typography variant="body1">
+							<Link
+								href="https://discord.com/invite/m3TBB9XEkb"
+								target="_blank"
+								rel="noopener"
+								sx={{ verticalAlign: "bottom" }}
+							>
+								<img
+									style={{ verticalAlign: "bottom", transform: "scale(2)" }}
+									src="https://img.shields.io/discord/1091306623819059300?color=7289da&label=Discord&logo=discord&logoColor=fff&style=for-the-badge"
+								/>
+							</Link>
 						</Typography>
 					</Stack>
 				</Stack>

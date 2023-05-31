@@ -13,20 +13,23 @@ const theme = extendTheme({
 		light: {
 			palette: {
 				primary: {
-					main: "#40088d",
+					main: "#2c90fc",
 				},
 				secondary: {
-					main: "#038225",
+					main: "#b827fc",
 				},
 			},
 		},
 		dark: {
 			palette: {
 				primary: {
-					main: "#00d720",
+					main: "#2c90fc",
 				},
 				secondary: {
-					main: "#cc06ed",
+					main: "#b827fc",
+				},
+				text: {
+					secondary: "#ffffff",
 				},
 			},
 		},
@@ -38,7 +41,7 @@ const theme = extendTheme({
 			marginBottom: 24,
 		},
 		h2: {
-			fontSize: "1.9em",
+			fontSize: "4.2em",
 			marginBottom: 12,
 		},
 		h3: {
@@ -50,8 +53,7 @@ const theme = extendTheme({
 			marginBottom: 12,
 		},
 		h5: {
-			fontSize: "1em",
-			marginBottom: 12,
+			fontSize: "1.75em",
 		},
 		h6: {
 			fontSize: "0.8em",
