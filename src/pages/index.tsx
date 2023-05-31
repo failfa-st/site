@@ -9,7 +9,6 @@ import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useSession } from "next-auth/react";
 import UserLogin from "@/components/user-login";
-import { Link } from "@/components/link";
 import ProjectsGrid, { Project } from "@/components/projects-grid";
 
 const projects: Project[] = [
@@ -164,7 +163,7 @@ export default function Home() {
 						</Typography>
 
 						<Typography variant="body1">
-							<Link
+							<MuiLink
 								href="https://discord.com/invite/m3TBB9XEkb"
 								target="_blank"
 								rel="noopener"
@@ -174,7 +173,7 @@ export default function Home() {
 									style={{ verticalAlign: "bottom", transform: "scale(2)" }}
 									src="https://img.shields.io/discord/1091306623819059300?color=7289da&label=Discord&logo=discord&logoColor=fff&style=for-the-badge"
 								/>
-							</Link>
+							</MuiLink>
 						</Typography>
 					</Stack>
 				</Stack>
