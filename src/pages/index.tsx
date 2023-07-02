@@ -239,7 +239,7 @@ export default function Home() {
 								<Grid key={card.shortDescription} xs={12} sm={6} md={4}>
 									<Card
 										sx={{
-											backgroundColor: "rgba(255, 255, 255, 0.1)",
+											backgroundColor: "rgba(255, 255, 255, 0.05)",
 											backdropFilter: "blur(10px)",
 											border: "1px solid rgba(255, 255, 255, 0.2)",
 											borderRadius: "10px",
