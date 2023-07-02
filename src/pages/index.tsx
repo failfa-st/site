@@ -66,7 +66,7 @@ const infoCards = [
 		),
 		headerTitle: (
 			<>
-				<Chip label="Coming soon: Discord Chat Docs" color="success" variant="outlined" />
+				<Chip label="Soon: Discord Chat Docs" color="success" variant="outlined" />
 			</>
 		),
 	},
