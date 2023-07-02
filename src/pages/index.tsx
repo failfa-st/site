@@ -129,7 +129,10 @@ const infoCards = [
 		links: [{ text: "GitHub", link: "https://github.com/failfa-st", icon: <GitHubIcon /> }],
 		shield: (
 			<Typography>
-				<img src="https://img.shields.io/github/stars/failfa-st?color=000000&label=failfa.st Stars&logo=github&logoColor=fff&style=for-the-badge" />
+				<img
+					alt="failfa.st stars"
+					src="https://img.shields.io/github/stars/failfa-st?color=000000&label=failfa.st Stars&logo=github&logoColor=fff&style=for-the-badge"
+				/>
 			</Typography>
 		),
 	},
