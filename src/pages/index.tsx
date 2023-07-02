@@ -202,7 +202,7 @@ function ConnectedDots() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 
-		const numDots = 200; // in dev mode this will be doubled
+		const numDots = 300; // in dev mode this will be doubled
 		const dotRadius = 2;
 		const dotSpeed = 0.25;
 
@@ -317,7 +317,7 @@ export default function Home() {
 								<Grid key={card.shortDescription} xs={12} sm={6} md={4}>
 									<Card
 										sx={{
-											backgroundColor: "rgba(255, 255, 255, 0.05)",
+											backgroundColor: "rgba(255, 255, 255, 0.0125)",
 											backdropFilter: "blur(10px)",
 											border: "1px solid rgba(255, 255, 255, 0.2)",
 											borderRadius: "10px",
