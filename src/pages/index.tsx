@@ -1,26 +1,21 @@
+import Footer from "@/components/footer";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import HiveIcon from "@mui/icons-material/Hive";
+import LiveTvIcon from "@mui/icons-material/LiveTv";
+import { Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Footer from "@/components/footer";
-import { Typography } from "@mui/material";
-import MuiLink from "@mui/material/Link";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import SvgIcon from "@mui/material/SvgIcon";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import Card from "@mui/material/Card";
-import HiveIcon from "@mui/icons-material/Hive";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
+import Chip from "@mui/material/Chip";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import SvgIcon from "@mui/material/SvgIcon";
 import Grid from "@mui/material/Unstable_Grid2";
-import Layout from "@/components/layout";
-import Image from "next/image";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const iconSize = { width: 40, height: 40 };
 
