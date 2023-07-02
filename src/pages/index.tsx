@@ -119,7 +119,7 @@ function ConnectedDots() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 
-		const numDots = 75;
+		const numDots = 100;
 		const dotRadius = 2;
 		const dotSpeed = 0.25;
 
