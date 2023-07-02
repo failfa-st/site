@@ -63,6 +63,7 @@ const infoCards = [
 						alt="failfa.st twitch status"
 						src="https://img.shields.io/twitch/status/failfa_st?color=000000&logo=twitch&logoColor=fff&style=for-the-badge"
 						height={28}
+						width={169}
 					/>
 				</Typography>
 				<Typography>
@@ -70,6 +71,7 @@ const infoCards = [
 						alt="youtube subscribers"
 						src="https://img.shields.io/youtube/channel/subscribers/UCe7AJWRNZDNMZoH6FNvJKfg?color=000000&logo=youtube&logoColor=fff&style=for-the-badge"
 						height={28}
+						width={167}
 					/>
 				</Typography>
 			</>
@@ -100,6 +102,7 @@ const infoCards = [
 					alt="discord stats"
 					src="https://img.shields.io/discord/1091306623819059300?color=000000&label=Discord&logo=discord&logoColor=fff&style=for-the-badge"
 					height={28}
+					width={186}
 				/>
 			</Typography>
 		),
@@ -121,6 +124,7 @@ const infoCards = [
 					alt="hyv github stars"
 					src="https://img.shields.io/github/stars/failfa-st/hyv?color=000000&logo=github&logoColor=fff&style=for-the-badge"
 					height={28}
+					width={121}
 				/>
 			</Typography>
 		),
@@ -137,6 +141,7 @@ const infoCards = [
 					alt="failfa.st stars"
 					src="https://img.shields.io/github/stars/failfa-st?color=000000&label=failfa.st Stars&logo=github&logoColor=fff&style=for-the-badge"
 					height={28}
+					width={188}
 				/>
 			</Typography>
 		),
@@ -181,6 +186,8 @@ const infoCards = [
 									<img
 										alt={member.name}
 										src={`https://img.shields.io/github/followers/${member.github}?color=000000&label=followers&logo=github&logoColor=fff&style=for-the-badge`}
+										height={28}
+										width={163}
 									/>
 								</a>
 							</Stack>
