@@ -62,12 +62,14 @@ const infoCards = [
 					<img
 						alt="failfa.st twitch status"
 						src="https://img.shields.io/twitch/status/failfa_st?color=000000&logo=twitch&logoColor=fff&style=for-the-badge"
+						height={28}
 					/>
 				</Typography>
 				<Typography>
 					<img
 						alt="youtube subscribers"
 						src="https://img.shields.io/youtube/channel/subscribers/UCe7AJWRNZDNMZoH6FNvJKfg?color=000000&logo=youtube&logoColor=fff&style=for-the-badge"
+						height={28}
 					/>
 				</Typography>
 			</>
@@ -97,6 +99,7 @@ const infoCards = [
 				<img
 					alt="discord stats"
 					src="https://img.shields.io/discord/1091306623819059300?color=000000&label=Discord&logo=discord&logoColor=fff&style=for-the-badge"
+					height={28}
 				/>
 			</Typography>
 		),
@@ -117,6 +120,7 @@ const infoCards = [
 				<img
 					alt="hyv github stars"
 					src="https://img.shields.io/github/stars/failfa-st/hyv?color=000000&logo=github&logoColor=fff&style=for-the-badge"
+					height={28}
 				/>
 			</Typography>
 		),
@@ -132,6 +136,7 @@ const infoCards = [
 				<img
 					alt="failfa.st stars"
 					src="https://img.shields.io/github/stars/failfa-st?color=000000&label=failfa.st Stars&logo=github&logoColor=fff&style=for-the-badge"
+					height={28}
 				/>
 			</Typography>
 		),
@@ -201,12 +206,7 @@ export default function Home() {
 
 				<Container>
 					<Stack p={2}>
-						<Stack
-							flexDirection="row"
-							justifyContent="center"
-							alignItems="center"
-							sx={{ zIndex: 2 }}
-						>
+						<Stack flexDirection="row" justifyContent="center" alignItems="center">
 							<SvgIcon
 								viewBox="0 0 24 24"
 								sx={{
