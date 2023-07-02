@@ -17,6 +17,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import Grid from "@mui/material/Unstable_Grid2";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FlockingSimulation from "@/components/flocking-simulation";
+import Image from "next/image";
 
 const iconSize = { width: 40, height: 40 };
 
@@ -58,10 +59,16 @@ const infoCards = [
 		shield: (
 			<>
 				<Typography>
-					<img src="https://img.shields.io/twitch/status/failfa_st?color=000000&logo=twitch&logoColor=fff&style=for-the-badge" />
+					<img
+						alt="failfa.st twitch status"
+						src="https://img.shields.io/twitch/status/failfa_st?color=000000&logo=twitch&logoColor=fff&style=for-the-badge"
+					/>
 				</Typography>
 				<Typography>
-					<img src="https://img.shields.io/youtube/channel/subscribers/UCe7AJWRNZDNMZoH6FNvJKfg?color=000000&logo=youtube&logoColor=fff&style=for-the-badge" />
+					<img
+						alt="youtube subscribers"
+						src="https://img.shields.io/youtube/channel/subscribers/UCe7AJWRNZDNMZoH6FNvJKfg?color=000000&logo=youtube&logoColor=fff&style=for-the-badge"
+					/>
 				</Typography>
 			</>
 		),
@@ -87,7 +94,10 @@ const infoCards = [
 		],
 		shield: (
 			<Typography>
-				<img src="https://img.shields.io/discord/1091306623819059300?color=000000&label=Discord&logo=discord&logoColor=fff&style=for-the-badge" />
+				<img
+					alt="discord stats"
+					src="https://img.shields.io/discord/1091306623819059300?color=000000&label=Discord&logo=discord&logoColor=fff&style=for-the-badge"
+				/>
 			</Typography>
 		),
 	},
@@ -104,7 +114,10 @@ const infoCards = [
 		],
 		shield: (
 			<Typography>
-				<img src="https://img.shields.io/github/stars/failfa-st/hyv?color=000000&logo=github&logoColor=fff&style=for-the-badge" />
+				<img
+					alt="hyv github stars"
+					src="https://img.shields.io/github/stars/failfa-st/hyv?color=000000&logo=github&logoColor=fff&style=for-the-badge"
+				/>
 			</Typography>
 		),
 		headerTitle: <Chip label="Soon: Discord Chat Docs" color="success" variant="outlined" />,
@@ -143,7 +156,13 @@ const infoCards = [
 				{team.map(member => {
 					return (
 						<Stack key={member.github} flexDirection="row" alignItems="center" gap={2}>
-							<Avatar alt={member.name} src={member.image} />
+							<Image
+								alt={member.name}
+								src={member.image}
+								width={40}
+								height={40}
+								style={{ borderRadius: "50%" }}
+							/>
 							<Stack>
 								<Typography>{member.name}</Typography>
 								<a
@@ -210,7 +229,7 @@ export default function Home() {
 								failfa.st
 							</Typography>
 						</Stack>
-						<Typography variant="h4" component="h3" textAlign="center">
+						<Typography variant="h4" component="h2" textAlign="center">
 							Rapid AI powered Development
 						</Typography>
 					</Stack>
