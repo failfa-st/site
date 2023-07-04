@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-const maxSpeed = 1;
+const maxSpeed = 0.5;
 const boidCount = 100;
-const boidSize = 20;
-const boidVelocity = 10;
-const perceptionRadius = 30;
+const boidSize = 15;
+const boidVelocity = 25;
+const perceptionRadius = 40;
 const alignmentForce = 1.0;
-const cohesionForce = 2.0;
-const separationForce = 0.5;
-const boundaryForceWeight = 0.25;
-const margin = 75;
-const brightnessScale = 10; // 10 nearby boids correspond to maximum brightness
-const brightnessTransitionSmoothness = 0.1; // adjust this to control the speed of transition, lower values are slower
+const cohesionForce = 3.0;
+const separationForce = 1.0;
+const boundaryForceWeight = 0;
+const margin = 150;
+const brightnessScale = 5; // 10 nearby boids correspond to maximum brightness
+const brightnessTransitionSmoothness = 0.05; // adjust this to control the speed of transition, lower values are slower
 
 interface Vector {
 	x: number;
@@ -110,12 +110,13 @@ function limitMagnitude(v: Vector, max: number): Vector {
 function wrapPosition(v: Vector, width: number, height: number): Vector {
 	let x = v.x;
 	let y = v.y;
+	const margin = 50;
 
-	if (x < 0) x = width + v.x;
-	else if (x > width) x = v.x - width;
+	if (x < -margin) x = width + v.x + margin;
+	else if (x > width + margin) x = v.x - width - margin;
 
-	if (y < 0) y = height + v.y;
-	else if (y > height) y = v.y - height;
+	if (y < -margin) y = height + v.y + margin;
+	else if (y > height + margin) y = v.y - height - margin;
 
 	return { x, y };
 }
