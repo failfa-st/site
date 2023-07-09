@@ -375,7 +375,6 @@ export default function Home() {
 												rel="noopener"
 												variant="outlined"
 												startIcon={link.icon}
-												onClick={link.action}
 											>
 												{link.text}
 											</Button>
