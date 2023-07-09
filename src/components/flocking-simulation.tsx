@@ -10,7 +10,7 @@ const cohesionForce = 1.0;
 const separationForce = 1.0;
 const boundaryForceWeight = 2;
 const margin = 0;
-const brightnessScale = 20; // 10 nearby boids correspond to maximum brightness
+const brightnessScale = 20; // 20 nearby boids correspond to maximum brightness
 const brightnessTransitionSmoothness = 0.05; // adjust this to control the speed of transition, lower values are slower
 const rotationSpeed = 0.025;
 
