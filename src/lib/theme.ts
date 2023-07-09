@@ -34,6 +34,7 @@ const theme = extendTheme({
 			},
 		},
 	},
+
 	typography: {
 		...poppins.style,
 		h1: {

@@ -14,6 +14,8 @@ const Footer = () => {
 				flexWrap: "wrap",
 				p: 2,
 				pt: 10,
+				position: "relative",
+				zIndex: 1,
 			}}
 		>
 			<Stack sx={{ flex: 1 }}>

@@ -18,6 +18,9 @@ const nextConfig = {
 	reactStrictMode: true,
 	pageExtensions: ["ts", "tsx", "mdx"],
 	swcMinify: true,
+	images: {
+		domains: ["avatars.githubusercontent.com", "img.shields.io"],
+	},
 };
 
 export default withMDX(nextConfig);
