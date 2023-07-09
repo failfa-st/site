@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const maxSpeed = 0.5;
-const boidCount = 100;
-const boidSize = 15;
+const maxSpeed = 0.25;
+const boidCount = 300;
+const boidSize = 10;
 const boidVelocity = 25;
-const perceptionRadius = 40;
+const perceptionRadius = 20;
 const alignmentForce = 1.0;
-const cohesionForce = 3.0;
+const cohesionForce = 1.0;
 const separationForce = 1.0;
-const boundaryForceWeight = 0;
-const margin = 150;
-const brightnessScale = 5; // 10 nearby boids correspond to maximum brightness
+const boundaryForceWeight = 2;
+const margin = 0;
+const brightnessScale = 20; // 10 nearby boids correspond to maximum brightness
 const brightnessTransitionSmoothness = 0.05; // adjust this to control the speed of transition, lower values are slower
+const rotationSpeed = 0.025;
 
 interface Vector {
 	x: number;
@@ -23,6 +24,7 @@ interface Boid {
 	velocity: Vector;
 	brightness: number;
 	nearbyBoids: number;
+	angle: number;
 }
 
 function getFlockBehaviors(
@@ -145,6 +147,7 @@ export default function FlockingSimulation() {
 				},
 				brightness: 0,
 				nearbyBoids: 0,
+				angle: Math.random() * Math.PI * 2,
 			});
 		}
 	};
@@ -192,7 +195,12 @@ export default function FlockingSimulation() {
 				let brightness =
 					boid.brightness + smoothness * (targetBrightness - boid.brightness); // slowly transition towards target brightness
 
-				boidsArray[index] = { position, velocity, brightness, nearbyBoids }; // update boid with new brightness
+				let targetAngle = Math.atan2(velocity.y, velocity.x) + Math.PI / 2;
+
+				// Interpolate between the current angle and the target angle based on the rotation speed
+				let angle = boid.angle + rotationSpeed * (targetAngle - boid.angle);
+
+				boidsArray[index] = { position, velocity, brightness, nearbyBoids, angle }; // update boid with new brightness
 
 				const angleStep = (2 * Math.PI) / 6;
 
@@ -202,11 +210,15 @@ export default function FlockingSimulation() {
 				ctx.shadowColor = color;
 				ctx.fillStyle = color;
 
+				ctx.save(); // save the current context state
+				ctx.translate(position.x, position.y); // move context to boid position
+				ctx.rotate(angle); // rotate context by angle
+
 				ctx.beginPath();
 				for (let i = 0; i < 6; i++) {
 					const angle = i * angleStep;
-					const x = position.x + boidSize * Math.cos(angle);
-					const y = position.y + boidSize * Math.sin(angle);
+					const x = boidSize * Math.cos(angle); // don't need to add position here
+					const y = boidSize * Math.sin(angle); // don't need to add position here
 					if (i === 0) {
 						ctx.moveTo(x, y);
 					} else {
@@ -215,6 +227,8 @@ export default function FlockingSimulation() {
 				}
 				ctx.closePath();
 				ctx.fill();
+
+				ctx.restore(); // restore the context state to its original form
 			});
 
 			requestAnimationFrame(draw);
